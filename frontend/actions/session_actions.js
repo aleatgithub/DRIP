@@ -30,7 +30,7 @@ export const login = user => dispatch => (
     dispatch(receiveCurrentUser(user))
   ), err => {
     dispatch(receiveErrors(err.responseJSON))
-    // console.log("UHHH THERE's an error D:")
+    
   })
 );
 

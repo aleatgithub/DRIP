@@ -141,7 +141,7 @@ var login = function login(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
-      dispatch(receiveErrors(err.responseJSON)); // console.log("UHHH THERE's an error D:")
+      dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
