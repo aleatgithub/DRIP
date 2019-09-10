@@ -15,7 +15,7 @@ import {
 const App = () => (
   <div>
     <header>
-      <h1>  DRIP (💧do you still have it?? 🌈 💧 🐸 )</h1>
+      <h1>  DRIP (💧must we be the phantomsss 🐱🐁 👻 🐸 )</h1>
       <GreetingContainer/>
     </header>
     <AuthRoute exact path="/login" component={LoginFormContainer} />
