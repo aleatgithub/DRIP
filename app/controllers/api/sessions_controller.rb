@@ -9,7 +9,6 @@ class Api::SessionsController < ApplicationController
       render "api/users/show"
     else
       # render json: @user.errors.full_messages, status: 422
-      debugger
       render json: "Invalid credentials", status: 422;
       puts "Go to your controller - login isn't working" 
     end
