@@ -1,38 +1,66 @@
-.header-container {
-  border-bottom: 1px solid #ccc;
-  text-transform: uppercase;
-}
 
-.header-logo {
-  display: inline-block;
-  margin: 30px 0px 25px 0px;
-  letter-spacing: 3px;
-  font-weight: 300;
-  font-size: 20px;
+.header-container {
+  position: sticky;
+  top: 0px;
+  z-index: 900;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+  background: white;
+  transition: all 600ms ease 0s;
 
 }
 
 .header-group {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 90px;
   text-decoration: none;
+  text-transform: uppercase;
+
 }
 
-.login-signup {
- text-decoration: none;
- font-size: 15px;
- display: flex;
- margin: 30px 0px 25px 0px;
+.header-right {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  margin: 0px 0px 25px 0px;
+  padding-left: 0;
 }
 
- #login-link { 
- text-decoration: none;
+.nav-items { 
+  display: flex; 
+  justify-content: space-between;
+  width: 200px;
+  margin: 30px 0px 25px 0px;
+  padding-left: 0;
+  font-size: 11px; 
 }
 
-#signup-link { 
-  text-decoration: none;
-} 
+ #login-logout {
+  margin: 30px 0px 25px 0px;
+  padding-left: 0;
+  font-size: 11px;
+  
+}
+
+#header-logo {
+  display: flex;
+  margin: 30px 0px 25px 0px;
+  letter-spacing: 3px;
+  font-weight: 300;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+/* #login-link {
+  letter-spacing: 1px;
+  font-weight: 100;
+  font-size: 1px;
+  float: right;
+} */
+
 
 /* .header-list {
   display: flex;

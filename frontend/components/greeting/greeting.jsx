@@ -1,31 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Nav from '../header/nav'
 
 const Greeting = ({ currentUser, logout }) => { 
 
   const sessionLinks = () => (
     <div className="header-group"> 
-      <h3 className="header-logo">
-        <a href="#">DRIP</a>
-      </h3>
-      <nav className="login-signup">
-        <span id="login-link"><Link to="/login">Login</Link> </span>
-        {/* &nbsp;&nbsp; 
-        <span id="signup-link"><Link to="/signup">Sign up</Link></span> */}
-      </nav>
+      <a id="header-logo" href="#">DRIP</a>
+      <div className="header-right">
+        <span id="login-logout"><Link to="/login">Login</Link>
+        </span>
+        <Nav/>
+      </div>
     </div>
   );
+
   const greetingLogout = () => (
     <div className="header-group">
-      <h3 className="header-logo">
-        <a href="#">DRIP</a>
-      </h3>
-      <button className="header-button" onClick={logout}>Log Out</button>
+      <a id="header-logo" href="#">DRIP</a>
+      <div className="header-right">
+      <span id="login-logout">
+       <button id="logout-button" onClick={logout}>Log Out</button>
+      </span>
+      <Nav/>
+      </div>
     </div>
   );
   return currentUser ? greetingLogout() : sessionLinks();
 };
-
 
 export default Greeting;
