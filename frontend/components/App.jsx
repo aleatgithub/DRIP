@@ -3,7 +3,7 @@ import GreetingContainer from "./greeting/greeting_container";
 import SignupFormContainer from './session_forms/signup_form_container';
 import LoginFormContainer from './session_forms/login_form_container';
 import { AuthRoute } from '../util/route_util';
-
+// import Footer from './footer/footer';
 import {
   Route,
   Redirect,
@@ -23,6 +23,10 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/"/>
     </Switch>
+    
+    <footer>
+      {/* <FooterComponent/> */}
+    </footer>
   </div>
 )
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { deleteSessionErrors } from '../../actions/session_actions';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
   update(field) {
@@ -27,7 +29,12 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
-  renderErrors() { //rendering session errors
+  clearErrors() {
+    this.props.clearErrors(this.props.errors)
+    console.log("clearErrors is being called")
+  }
+
+  renderErrors() { 
     return (
       <ul>
         {this.props.errors.map((error, i) => (
@@ -41,43 +48,62 @@ class LoginForm extends React.Component {
 
    render() {
     return (
+     
        <div className="login-form-container">
-         
           <div className="login-hero">
           </div>
 
+       <div className="parent-login-box">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h4 id="login-title">Log in</h4>
-          {this.renderErrors()}
-          <br/>  
+
+            <div className="session-errors">
+            {this.renderErrors()}
+            </div>
+
            <div className="login-form">
-             <br />
-             <label>Email:
+             <br/>
+             <label>
+              <span id="input-text">Email Address</span>
               <input type="text"
                  value={this.state.email}
                  onChange={this.update('email')}
-                 className="login-input"
+                 className="login-input-field"
                />
              </label>
              <br />
-             <label>Password:
+             <label>
+              <span id="input-text">Password</span>
               <input type="password"
                  value={this.state.password}
                  onChange={this.update('password')}
-                 className="login-input"
+                 className="login-input-field"
                />
              </label>
              <br/>
-            <input className="session-submit" type="submit" value="Login"></input>
-           </div>
-           <div>
-            <span id="signup-link">
-              <Link to="/signup">Create Account +</Link></span>
-           </div>
+            <div className="signup-link-container">
+              <span id="signup-link">
+               <Link to="/signup" onClick={this.clearErrors}>Create Account +</Link>
+              </span>
+            </div >
+
+            <div className="session-submit">
+                <input id="session-submit-button" type="submit" className="hidden" value="Login"></input> 
+             </div>
+            </div>
          </form>
+
+          <div className="session-submit"> 
+            <label htmlFor="session-submit-button" id="label-ssb">
+                Log In
+            </label>
+            </div>
+        </div> 
        </div>
+   
     )
   }
 }
 
 export default LoginForm
+

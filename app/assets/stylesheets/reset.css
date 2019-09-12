@@ -29,3 +29,11 @@ a:visited {
   color: black;
 
 }
+
+
+input:focus, 
+select:focus, 
+textearea:focus, 
+button:focus {
+  outline: none;
+}
