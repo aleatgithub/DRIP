@@ -5,24 +5,21 @@ import Nav from '../header/nav'
 const Greeting = ({ currentUser, logout }) => { 
 
   const sessionLinks = () => (
-    <div className="header-group"> 
+    <div className="header-content"> 
       <a id="header-logo" href="#">DRIP</a>
-      <div className="header-right">
-        <span id="login-logout"><Link to="/login">Login</Link>
-        </span>
+      <div className="navbar"> 
+        <Link to="/login" className="login/logout" id="login-link">Login</Link>
         <Nav/>
       </div>
     </div>
   );
 
   const greetingLogout = () => (
-    <div className="header-group">
+    <div className="header-content">
       <a id="header-logo" href="#">DRIP</a>
-      <div className="header-right">
-      <span id="login-logout">
-       <button id="logout-button" onClick={logout}>Log Out</button>
-      </span>
-      <Nav/>
+      <div className="navbar">
+       <button className="login-logout" id="logout-button" onClick={logout}>Log Out</button>
+       <Nav/>
       </div>
     </div>
   );

@@ -237,33 +237,32 @@ var Greeting = function Greeting(_ref) {
 
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "header-group"
+      className: "header-content"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       id: "header-logo",
       href: "#"
     }, "DRIP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "header-right"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      id: "login-logout"
+      className: "navbar"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/login"
-    }, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_nav__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      to: "/login",
+      className: "login/logout",
+      id: "login-link"
+    }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_nav__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
   };
 
   var greetingLogout = function greetingLogout() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "header-group"
+      className: "header-content"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       id: "header-logo",
       href: "#"
     }, "DRIP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "header-right"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      id: "login-logout"
+      className: "navbar"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "login-logout",
       id: "logout-button",
       onClick: logout
-    }, "Log Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_nav__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+    }, "Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_nav__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
   };
 
   return currentUser ? greetingLogout() : sessionLinks();
@@ -330,20 +329,22 @@ __webpack_require__.r(__webpack_exports__);
 
 var Nav = function Nav() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-nav"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "nav-items"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "nav-styles"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Styles")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "nav-shop"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, "Shop All")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "nav-search"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "nav-menu"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "nav-links"
+  }, "Styles")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "nav-links"
+  }, "Shop All")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "nav-links"
+  }, "Search")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "nav-links"
+  }, "Menu"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
@@ -435,6 +436,11 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.update = _this.update.bind(_assertThisInitialized(_this));
     _this.clearErrors = _this.clearErrors.bind(_assertThisInitialized(_this));
+    _this.demoUser = {
+      email: "demo@drip.com",
+      password: "password"
+    };
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -463,12 +469,19 @@ function (_React$Component) {
       console.log("clearErrors is being called");
     }
   }, {
+    key: "handleDemo",
+    value: function handleDemo() {
+      // e.preventDefault();
+      this.props.login(this.demoUser);
+    } // setTimeout(this.clearErrors, 10000)
+
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
-        }, error);
+        });
       }));
     }
   }, {
@@ -486,10 +499,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         id: "login-title"
       }, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-errors"
-      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "session-errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "input-text"
       }, "Email Address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -510,7 +523,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         onClick: this.clearErrors
-      }, "Create Account +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create Account +")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDemo,
+        id: "demo-button"
+      }, "DEMO +")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit-button",
@@ -655,10 +671,12 @@ function (_React$Component) {
     key: "renderErrors",
     value: function renderErrors() {
       //rendering session errors
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "errors-ul"
+      }, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
-        }, error);
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), error, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       }));
     }
   }, {
@@ -675,7 +693,7 @@ function (_React$Component) {
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         id: "login-title"
-      }, "Create an Account "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create an Account "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-errors"
       }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"

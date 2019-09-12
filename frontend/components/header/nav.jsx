@@ -4,23 +4,21 @@ import SignupFormContainer from '../session_forms/signup_form_container';
 import LoginFormContainer from '../session_forms/login_form_container';
 
 const Nav = () => (
-  <div className="nav-items"> 
-    <span id="nav-styles"> 
-      <a href="#">Styles</a>
-    </span>
-
-    <span id="nav-shop">
-      <a href="#">Shop All</a>
-    </span>
-  
-    <span id="nav-search">
-      <i></i>
-    </span>
-
-    <span id="nav-menu">
-      <i></i>
-    </span>
-
+  <div className="main-nav"> 
+    <ul className="nav-items">
+      <li>
+      <a href="#" className="nav-links">Styles</a>
+      </li>
+      <li>
+        <a href="#" className="nav-links">Shop All</a>
+      </li>
+      <li>
+        <a href="#" className="nav-links">Search</a>
+      </li>
+      <li>
+        <a href="#" className="nav-links">Menu</a>
+      </li>
+    </ul>
   </div>
 );
 

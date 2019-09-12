@@ -13,7 +13,7 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
-  <div>
+ <div>
     <header className="header-container">
       <GreetingContainer/>  
     </header>

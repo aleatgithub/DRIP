@@ -12,6 +12,11 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.clearErrors = this.clearErrors.bind(this);
+    this.demoUser = {
+      email: "demo@drip.com",
+      password: "password"
+    }
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   update(field) {
@@ -34,17 +39,25 @@ class LoginForm extends React.Component {
     console.log("clearErrors is being called")
   }
 
+  handleDemo() {
+    // e.preventDefault();
+    this.props.login(this.demoUser)
+  }
+
+  // setTimeout(this.clearErrors, 10000)
+
   renderErrors() { 
     return (
       <ul>
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
-            {error}
+ 
           </li>
         ))}
       </ul>
     );
   }
+
 
    render() {
     return (
@@ -56,13 +69,15 @@ class LoginForm extends React.Component {
        <div className="parent-login-box">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h4 id="login-title">Log in</h4>
-
-            <div className="session-errors">
-            {this.renderErrors()}
-            </div>
-
            <div className="login-form">
              <br/>
+
+              <div className="session-errors">
+                {this.renderErrors()}
+              </div>
+
+               <br/>
+
              <label>
               <span id="input-text">Email Address</span>
               <input type="text"
@@ -80,12 +95,14 @@ class LoginForm extends React.Component {
                  className="login-input-field"
                />
              </label>
+
              <br/>
             <div className="signup-link-container">
               <span id="signup-link">
                <Link to="/signup" onClick={this.clearErrors}>Create Account +</Link>
               </span>
-            </div >
+                <button onClick={this.handleDemo} id="demo-button">DEMO +</button>
+            </div>
 
             <div className="session-submit">
                 <input id="session-submit-button" type="submit" className="hidden" value="Login"></input> 
@@ -97,7 +114,7 @@ class LoginForm extends React.Component {
             <label htmlFor="session-submit-button" id="label-ssb">
                 Log In
             </label>
-            </div>
+        </div>
         </div> 
        </div>
    

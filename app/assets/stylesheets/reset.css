@@ -24,10 +24,16 @@ time, mark, audio, video {
   font-family: 'Josefin Sans', serif;
 }
 
+button {
+  font-family: 'Josefin Sans', serif;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-size: 11px;
+}
 
 a:visited {
   color: black;
-
 }
 
 
@@ -36,4 +42,8 @@ select:focus,
 textearea:focus, 
 button:focus {
   outline: none;
+}
+
+[contenteditable="true"]:focus {
+    outline: none;
 }
