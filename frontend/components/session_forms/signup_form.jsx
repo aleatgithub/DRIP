@@ -33,7 +33,7 @@ class SignupForm extends React.Component {
     console.log("clearErrors is being called")
   }
 
-  renderErrors() { //rendering session errors
+  renderErrors() {
     return (
       <ul className="errors-ul">
         {this.props.errors.map((error, i) => (

@@ -466,7 +466,6 @@ function (_React$Component) {
     key: "clearErrors",
     value: function clearErrors() {
       this.props.clearErrors(this.props.errors);
-      console.log("clearErrors is being called");
     }
   }, {
     key: "handleDemo",
@@ -478,10 +477,12 @@ function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "errors-ul"
+      }, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
-        });
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), error, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       }));
     }
   }, {
@@ -499,10 +500,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         id: "login-title"
       }, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-errors"
-      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "input-text"
       }, "Email Address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -523,10 +524,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         onClick: this.clearErrors
-      }, "Create Account +")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDemo,
-        id: "demo-button"
-      }, "DEMO +")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create Account +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit-button",
@@ -534,6 +532,11 @@ function (_React$Component) {
         className: "hidden",
         value: "Login"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "demo-button-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDemo,
+        id: "demo-button"
+      }, "DEMO +")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "session-submit-button",
@@ -670,7 +673,6 @@ function (_React$Component) {
   }, {
     key: "renderErrors",
     value: function renderErrors() {
-      //rendering session errors
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "errors-ul"
       }, this.props.errors.map(function (error, i) {

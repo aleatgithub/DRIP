@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
 
   clearErrors() {
     this.props.clearErrors(this.props.errors)
-    console.log("clearErrors is being called")
+
   }
 
   handleDemo() {
@@ -46,12 +46,14 @@ class LoginForm extends React.Component {
 
   // setTimeout(this.clearErrors, 10000)
 
-  renderErrors() { 
+  renderErrors() {
     return (
-      <ul>
+      <ul className="errors-ul">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
- 
+            <br />
+            {error}
+            <br />
           </li>
         ))}
       </ul>
@@ -69,15 +71,12 @@ class LoginForm extends React.Component {
        <div className="parent-login-box">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h4 id="login-title">Log in</h4>
+
+            <div className="session-errors">
+              {this.renderErrors()}
+            </div>
+
            <div className="login-form">
-             <br/>
-
-              <div className="session-errors">
-                {this.renderErrors()}
-              </div>
-
-               <br/>
-
              <label>
               <span id="input-text">Email Address</span>
               <input type="text"
@@ -101,7 +100,6 @@ class LoginForm extends React.Component {
               <span id="signup-link">
                <Link to="/signup" onClick={this.clearErrors}>Create Account +</Link>
               </span>
-                <button onClick={this.handleDemo} id="demo-button">DEMO +</button>
             </div>
 
             <div className="session-submit">
@@ -109,7 +107,9 @@ class LoginForm extends React.Component {
              </div>
             </div>
          </form>
-
+          <div className="demo-button-container">
+            <button onClick={this.handleDemo} id="demo-button">DEMO +</button>
+          </div>
           <div className="session-submit"> 
             <label htmlFor="session-submit-button" id="label-ssb">
                 Log In
