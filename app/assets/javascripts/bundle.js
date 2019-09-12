@@ -668,7 +668,6 @@ function (_React$Component) {
     key: "clearErrors",
     value: function clearErrors() {
       this.props.clearErrors(this.props.errors);
-      console.log("clearErrors is being called");
     }
   }, {
     key: "renderErrors",

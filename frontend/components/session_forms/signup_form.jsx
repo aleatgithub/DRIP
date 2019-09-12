@@ -30,7 +30,7 @@ class SignupForm extends React.Component {
 
   clearErrors() {
     this.props.clearErrors(this.props.errors)
-    console.log("clearErrors is being called")
+
   }
 
   renderErrors() {
