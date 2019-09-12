@@ -1,2 +1,6 @@
 class Sneaker < ApplicationRecord
-end
+
+
+ has_many :listings
+
+end 
