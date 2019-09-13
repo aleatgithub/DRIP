@@ -12,13 +12,14 @@ import {
   HashRouter
 } from 'react-router-dom';
 
+
 const App = () => (
 
   <div className="master-div">
-    <header id="header-container">
+    <header  id="transformable">
       <Header/>  
     </header>
-
+    
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

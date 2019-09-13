@@ -108,9 +108,11 @@ class LoginForm extends React.Component {
                 <input id="session-submit-button" type="submit" className="hidden" value="Login"></input> 
              </div>
             </div>
+
             <div className="demo-button-container">
               <button onClick={this.handleDemo} id="demo-button">DEMO +</button>
             </div>
+            
           </form>
 
           <div className="session-submit"> 

@@ -169,8 +169,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding-bottom: 30%;
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 #demo-button {
@@ -179,6 +178,7 @@
   align-items: center;
   cursor: pointer;
   text-decoration: underline;
+  padding: 5px;
 }
 .session-errors  {
   align-items:center;

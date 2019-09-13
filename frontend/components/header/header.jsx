@@ -3,23 +3,32 @@ import { Link } from 'react-router-dom';
 import Nav from '../nav/nav'
 
 
-const changeHeaderClass = () => {
-  let pos = window.pageYOffset;
-  const normalHeader = document.getElementById("header-container");
-  const scrolledHeader = document.getElementById("scrolled");
+// const changeHeaderClass = () => {
+//   let pos = window.pageYOffset;
+//   const normalHeader = document.getElementsById("header-container");
+//   const scrolledHeader = document.getElementsById("scrolled");
 
-  if (pos === 0 && (normalHeader !== null)) {
-    normalHeader.id = "header-container";
-  } else if (pos > 0) {
-    normalHeader.id = "scrolled";
-  } else {
-    scrolledHeader.id = "header-container";
-  }
-}
+//   if (pos === 0 && (normalHeader !== null)) {
+//     normalHeader.className = "header-container";
+//   } else if (pos > 0) {
+//     normalHeader.className = "scrolled";
+//   } else {
+//     scrolledHeader.className = "header-container";
+//   }
+// }
+
+// document.addEventListener("scroll", () => {
+//   changeHeaderClass();
+// })
+
+
+const handleScroll = () => {
+  let transformable = document.getElementById("transformable");
+  transformable.className = (window.pageYOffset === 0) ? "header-container" : "scrolled"
+};
 document.addEventListener("scroll", () => {
-  changeHeaderClass();
+  handleScroll();
 })
-
 
 const Header = ({ currentUser, logout }) => { 
 

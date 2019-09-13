@@ -1,5 +1,5 @@
 
-#header-container {
+.header-container {
   position: sticky;
   top: 0px;
   z-index: 900;
@@ -15,18 +15,18 @@
 }
 
 //  @media (min-width: 40em) { 
-//  #header-container {
+//  .header-container {
 //     display: flex;
-//     height: 80px;
+//     height: 90px;
 //     border-bottom: none;
 //   }
 // } 
 
-#scrolled {
+.scrolled {
   position: sticky;
   top: 0px;
   z-index: 900;
-  height: 50px;
+  height: 60px;
   width: 100%;
   top: 0px;
   background: white;

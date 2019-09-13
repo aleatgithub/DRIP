@@ -247,7 +247,7 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "master-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-    id: "header-container"
+    id: "transformable"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     exact: true,
     path: "/login",
@@ -331,24 +331,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav/nav */ "./frontend/components/nav/nav.jsx");
 
 
+ // const changeHeaderClass = () => {
+//   let pos = window.pageYOffset;
+//   const normalHeader = document.getElementsById("header-container");
+//   const scrolledHeader = document.getElementsById("scrolled");
+//   if (pos === 0 && (normalHeader !== null)) {
+//     normalHeader.className = "header-container";
+//   } else if (pos > 0) {
+//     normalHeader.className = "scrolled";
+//   } else {
+//     scrolledHeader.className = "header-container";
+//   }
+// }
+// document.addEventListener("scroll", () => {
+//   changeHeaderClass();
+// })
 
-
-var changeHeaderClass = function changeHeaderClass() {
-  var pos = window.pageYOffset;
-  var normalHeader = document.getElementById("header-container");
-  var scrolledHeader = document.getElementById("scrolled");
-
-  if (pos === 0 && normalHeader !== null) {
-    normalHeader.id = "header-container";
-  } else if (pos > 0) {
-    normalHeader.id = "scrolled";
-  } else {
-    scrolledHeader.id = "header-container";
-  }
+var handleScroll = function handleScroll() {
+  var transformable = document.getElementById("transformable");
+  transformable.className = window.pageYOffset === 0 ? "header-container" : "scrolled";
 };
 
 document.addEventListener("scroll", function () {
-  changeHeaderClass();
+  handleScroll();
 });
 
 var Header = function Header(_ref) {
