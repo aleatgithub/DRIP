@@ -581,12 +581,12 @@ function (_React$Component) {
         type: "submit",
         className: "hidden",
         value: "Login"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "demo-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDemo,
         id: "demo-button"
-      }, "DEMO +")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "DEMO +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "session-submit-button",
