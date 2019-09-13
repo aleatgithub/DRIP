@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
 
   handleDemo() {
     this.props.login(this.demoUser)
-    console.log("demo is being called")
+    // console.log("demo is being called")
   }
 
   // setTimeout(this.clearErrors, 10000)
