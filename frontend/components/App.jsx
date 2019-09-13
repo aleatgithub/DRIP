@@ -13,11 +13,12 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
- <div className="master-div">
-    <header className="header-container">
+
+  <div className="master-div">
+    <header id="header-container">
       <Header/>  
     </header>
-    
+
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
@@ -30,4 +31,7 @@ const App = () => (
   </div>
 )
 
+//if scrolly is > 1 
+//change class 
 export default App;
+

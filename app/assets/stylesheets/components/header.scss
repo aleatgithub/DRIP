@@ -1,24 +1,38 @@
 
-.header-container {
+#header-container {
   position: sticky;
   top: 0px;
   z-index: 900;
   height: 50px;
   width: 100%;
   top: 0px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px white;
   background: white;
   transition: all 600ms ease 0s;
+  display: flex;
+  height: 80px;
 
 }
 
- @media (min-width: 40em) { 
- .header-container {
-    display: flex;
-    height: 80px;
-    border-bottom: none;
-  }
-} 
+//  @media (min-width: 40em) { 
+//  #header-container {
+//     display: flex;
+//     height: 80px;
+//     border-bottom: none;
+//   }
+// } 
+
+#scrolled {
+  position: sticky;
+  top: 0px;
+  z-index: 900;
+  height: 50px;
+  width: 100%;
+  top: 0px;
+  background: white;
+  border-bottom: 1px solid black;
+  transition: all 600ms ease 0s;
+}
 
 
 .header-content {
@@ -45,6 +59,8 @@
     transition: all 600ms ease 0s;
   }
 }
+
+
 
 .navbar  { 
   display: flex; 

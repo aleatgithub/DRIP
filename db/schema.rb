@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_225602) do
+ActiveRecord::Schema.define(version: 2019_09_13_211050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,9 @@ ActiveRecord::Schema.define(version: 2019_09_12_225602) do
 
   create_table "sneakers", force: :cascade do |t|
     t.string "model", null: false
-    t.string "main_color", null: false
     t.string "colorway"
     t.string "silhouette"
     t.string "technology"
-    t.string "upper"
     t.string "brand", null: false
     t.string "designer"
     t.string "category", null: false

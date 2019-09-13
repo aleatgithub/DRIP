@@ -169,6 +169,55 @@ var deleteSessionErrors = function deleteSessionErrors(errors) {
 
 /***/ }),
 
+/***/ "./frontend/actions/sneaker_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/sneaker_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_SNEAKERS, RECEIVE_SNEAKER, fetchSneakers, fetchSneaker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SNEAKERS", function() { return RECEIVE_SNEAKERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SNEAKER", function() { return RECEIVE_SNEAKER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSneakers", function() { return fetchSneakers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSneaker", function() { return fetchSneaker; });
+/* harmony import */ var _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/sneakers_api_util */ "./frontend/util/sneakers_api_util.js");
+
+var RECEIVE_SNEAKERS = "RECEIVE_SNEAKERS";
+var RECEIVE_SNEAKER = "RECEIVE_SNEAKER";
+
+var receiveSneakers = function receiveSneakers(sneakers) {
+  return {
+    type: RECEIVE_SNEAKERS,
+    sneakers: sneakers
+  };
+};
+
+var receiveSneaker = function receiveSneaker(sneaker) {
+  return {
+    type: RECEIVE_SNEAKER,
+    sneaker: sneaker
+  };
+};
+
+var fetchSneakers = function fetchSneakers() {
+  return function (dispatch) {
+    return _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSneakers"]().then(function (sneakers) {
+      return dispatch(receiveSneakers(sneakers));
+    });
+  };
+};
+var fetchSneaker = function fetchSneaker(id) {
+  return function (dispatch) {
+    return _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSneaker"](id).then(function (sneaker) {
+      return dispatch(receiveSneaker(sneaker));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/App.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/App.jsx ***!
@@ -198,7 +247,7 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "master-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-    className: "header-container"
+    id: "header-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     exact: true,
     path: "/login",
@@ -211,7 +260,9 @@ var App = function App() {
     exact: true,
     path: "/"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
-};
+}; //if scrolly is > 1 
+//change class 
+
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
@@ -281,6 +332,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var changeHeaderClass = function changeHeaderClass() {
+  var pos = window.pageYOffset;
+  var normalHeader = document.getElementById("header-container");
+  var scrolledHeader = document.getElementById("scrolled");
+
+  if (pos === 0 && normalHeader !== null) {
+    normalHeader.id = "header-container";
+  } else if (pos > 0) {
+    normalHeader.id = "scrolled";
+  } else {
+    scrolledHeader.id = "header-container";
+  }
+};
+
+document.addEventListener("scroll", function () {
+  changeHeaderClass();
+});
 
 var Header = function Header(_ref) {
   var currentUser = _ref.currentUser,
@@ -899,10 +968,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _sneakers_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneakers_reducer */ "./frontend/reducers/sneakers_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  sneakers: _sneakers_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1022,6 +1094,42 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/sneakers_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/sneakers_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var SneakersReducer = function SneakersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKERS"]:
+      return action.sneakers;
+
+    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKER"]:
+      var sneaker = action.sneaker;
+      return Object.assign({}, state, _defineProperty({}, sneaker.id, sneaker));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SneakersReducer);
 
 /***/ }),
 
@@ -1165,6 +1273,32 @@ var logout = function logout() {
     method: 'DELETE'
   });
 }; // export const
+
+/***/ }),
+
+/***/ "./frontend/util/sneakers_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/sneakers_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchSneakers, fetchSneaker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSneakers", function() { return fetchSneakers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSneaker", function() { return fetchSneaker; });
+var fetchSneakers = function fetchSneakers() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/sneakers/'
+  });
+};
+var fetchSneaker = function fetchSneaker(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/sneakers/".concat(id)
+  });
+};
 
 /***/ }),
 
