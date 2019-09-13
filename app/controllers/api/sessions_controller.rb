@@ -10,7 +10,6 @@ class Api::SessionsController < ApplicationController
     else
       # render json: @user.errors.full_messages, status: 422
       render json: ["Invalid credentials"], status: 422;
-      puts "Go to your controller - login isn't working" 
     end
   end
 

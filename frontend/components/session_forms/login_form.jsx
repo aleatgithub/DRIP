@@ -40,8 +40,8 @@ class LoginForm extends React.Component {
   }
 
   handleDemo() {
-    // e.preventDefault();
     this.props.login(this.demoUser)
+    console.log("demo is being called")
   }
 
   // setTimeout(this.clearErrors, 10000)
@@ -66,7 +66,7 @@ class LoginForm extends React.Component {
      
        <div className="login-form-container">
           <div className="login-hero">
-          </div>
+        </div>
 
        <div className="parent-login-box">
         <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -102,19 +102,21 @@ class LoginForm extends React.Component {
               </span>
             </div>
 
-            <div className="session-submit">
+             <div className="session-submit">
                 <input id="session-submit-button" type="submit" className="hidden" value="Login"></input> 
              </div>
             </div>
-         </form>
+          </form>
+
           <div className="demo-button-container">
             <button onClick={this.handleDemo} id="demo-button">DEMO +</button>
           </div>
+
           <div className="session-submit"> 
             <label htmlFor="session-submit-button" id="label-ssb">
                 Log In
             </label>
-        </div>
+          </div>
         </div> 
        </div>
    
