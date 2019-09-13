@@ -51,8 +51,8 @@ class SignupForm extends React.Component {
     return (
    
       <div className="login-form-container">
-        <div className="login-hero">
-      </div>
+        <div className="signup-hero">
+       </div>
 
       <div className="parent-login-box">
         <form onSubmit={this.handleSubmit} className="login-form-box">

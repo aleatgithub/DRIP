@@ -1,9 +1,9 @@
 import React from 'react';
-import GreetingContainer from "./greeting/greeting_container";
+import Header from "./header/header_container";
 import SignupFormContainer from './session_forms/signup_form_container';
 import LoginFormContainer from './session_forms/login_form_container';
 import { AuthRoute } from '../util/route_util';
-// import Footer from './footer/footer';
+import Footer from './footer/footer';
 import {
   Route,
   Redirect,
@@ -15,7 +15,7 @@ import {
 const App = () => (
  <div>
     <header className="header-container">
-      <GreetingContainer/>  
+      <Header/>  
     </header>
     
     <Switch>
@@ -25,7 +25,7 @@ const App = () => (
     </Switch>
     
     <footer>
-      {/* <FooterComponent/> */}
+      {/* <Footer/> */}
     </footer>
   </div>
 )

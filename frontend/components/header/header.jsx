@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Nav from '../header/nav'
+import Nav from '../nav/nav'
 
-const Greeting = ({ currentUser, logout }) => { 
+const Header = ({ currentUser, logout }) => { 
 
   const sessionLinks = () => (
     <div className="header-content"> 
@@ -26,4 +26,4 @@ const Greeting = ({ currentUser, logout }) => {
   return currentUser ? greetingLogout() : sessionLinks();
 };
 
-export default Greeting;
+export default Header;
