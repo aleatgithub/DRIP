@@ -6,7 +6,7 @@
   height: 50px;
   width: 100%;
   top: 0px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid black;
   background: white;
   transition: all 600ms ease 0s;
 
@@ -16,6 +16,7 @@
  .header-container {
     display: flex;
     height: 80px;
+    border-bottom: none;
   }
 } 
 

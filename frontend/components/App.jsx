@@ -13,7 +13,7 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
- <div>
+ <div className="master-div">
     <header className="header-container">
       <Header/>  
     </header>
@@ -25,7 +25,7 @@ const App = () => (
     </Switch>
     
     <footer>
-      {/* <Footer/> */}
+      <Footer/>
     </footer>
   </div>
 )

@@ -4,7 +4,6 @@
    display: flex;
    height: calc(100vh - 160px);
    max-width: 80%;
-   margin-bottom: 80px;
    margin:0 auto;
    border: 1px solid black;
    min-height: 600px;
@@ -14,12 +13,12 @@
    text-emphasis: none;
    justify-content: center;
    font-weight: bold;
-   
+   margin-bottom: 80px;
 }
 
 .login-hero {
   width: 50%;
-  background: url(https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/025/302/838/original/482560_08.jpg.jpeg?1567029642);
+  background: url(https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/010/564/233/original/144693_06.jpg.jpeg?1521000237);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -29,7 +28,7 @@
 
 .signup-hero {
   width: 50%;
-  background: url(https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/018/783/112/original/488879_06.jpg.jpeg?1550260856);
+  background: url(https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/010/122/760/original/316403_06.jpg.jpeg?1519362087);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;

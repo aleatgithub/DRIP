@@ -1,0 +1,29 @@
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 756px;
+  background-color: black;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  justify-content: flex-start;
+  color: white;
+
+}
+
+.footer-top-links {
+  display: flex;
+  align-items: flex-start;
+  width: calc(100% - 180px);
+  height: 177px;
+  justify-content: space-between;
+}
+
+.footer-send-link-box {
+    width: calc(100% - 160px);
+    background-color: black;
+    position: relative;
+    border: 1px solid white;
+}
