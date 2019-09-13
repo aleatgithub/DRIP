@@ -239,13 +239,26 @@ var Footer = function Footer() {
     className: "footer-top-links"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "platform-links"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/aleatgithub",
+    className: "platform-link-boxes"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin-in"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.instagram.com/ahle.castillo/",
+    className: "platform-link-boxes"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.facebook.com/profile.php?id=100004059245235",
+    className: "platform-link-boxes"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "drip-docs"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-send-link-box"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/aleatgithub/DRIP"
-  }, "SEND LINK")));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " Some text will go in here. "))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
