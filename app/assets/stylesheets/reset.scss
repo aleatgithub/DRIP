@@ -32,14 +32,14 @@ button {
   font-size: 11px;
 }
 
-a:visited {
+a:link {
   color: black;
 }
 
-#header-logo:visited {
-  text-decoration: none;
-  color: black;
-}
+// #header-logo:visited {
+//   text-decoration: none;
+//   color: black;
+// }
 
 input:focus, 
 select:focus, 
