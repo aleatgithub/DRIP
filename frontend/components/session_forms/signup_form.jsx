@@ -95,7 +95,7 @@ class SignupForm extends React.Component {
 
             <div className="signup-link-container">
               <span id="signup-link">
-                <Link to="/login" onClick={this.clearErrors}>+ Back</Link>
+                  <Link to="/login" onClick={this.clearErrors} className="capital-l-links">+ Back</Link>
               </span>
             </div >
 

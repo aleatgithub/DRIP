@@ -1,15 +1,14 @@
 class Api::SneakersController < ApplicationController
 
   def index
-    @sneakers = Sneakers.all
-    render :index
+    @sneakers = Sneaker.all
   end
 
   def show
-    @sneaker = Sneakers.find(params[id])
+    @sneaker = Sneaker.find(params[id])
   end
 
   def sneaker_params
-    params.require(:sneaker).permit(:model, :brand, :main_color, :technology)
+    params.require(:sneaker).permit(:model, :brand, :technology)
   end
 end

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root"
 import { login, signup, logout } from './actions/session_actions';
+import { fetchSneakers, fetchSneaker } from "./util/sneakers_api_util"
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -19,6 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
+  //testing
+  // window.fetchSneakers = fetchSneakers;
+  // window.fetchSneaker = fetchSneaker;
+
+  //end of testing
   
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store}/>, root)

@@ -590,9 +590,14 @@ function (_React$Component) {
   }, {
     key: "handleDemo",
     value: function handleDemo() {
-      this.props.login(this.demoUser); // console.log("demo is being called")
+      this.props.login(this.demoUser);
     } // setTimeout(this.clearErrors, 10000)
 
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.clearErrors();
+    }
   }, {
     key: "renderErrors",
     value: function renderErrors() {
@@ -642,7 +647,8 @@ function (_React$Component) {
         id: "signup-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
-        onClick: this.clearErrors
+        onClick: this.clearErrors,
+        className: "capital-l-links"
       }, "Create Account +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -844,7 +850,8 @@ function (_React$Component) {
         id: "signup-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login",
-        onClick: this.clearErrors
+        onClick: this.clearErrors,
+        className: "capital-l-links"
       }, "+ Back"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -924,7 +931,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/sneakers_api_util */ "./frontend/util/sneakers_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -947,7 +956,11 @@ document.addEventListener("DOMContentLoaded", function () {
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  }
+  } //testing
+  // window.fetchSneakers = fetchSneakers;
+  // window.fetchSneaker = fetchSneaker;
+  //end of testing
+
 
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {

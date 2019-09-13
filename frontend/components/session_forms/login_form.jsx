@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
       })
     }
   }
-  
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
@@ -41,10 +41,13 @@ class LoginForm extends React.Component {
 
   handleDemo() {
     this.props.login(this.demoUser)
-    // console.log("demo is being called")
   }
 
   // setTimeout(this.clearErrors, 10000)
+
+  componentWillUnmount() {
+    this.clearErrors();
+  }
 
   renderErrors() {
     return (
@@ -98,10 +101,9 @@ class LoginForm extends React.Component {
              <br/>
             <div className="signup-link-container">
               <span id="signup-link">
-               <Link to="/signup" onClick={this.clearErrors}>Create Account +</Link>
+               <Link to="/signup" onClick={this.clearErrors} className="capital-l-links">Create Account +</Link>
               </span>
             </div>
-
              <div className="session-submit">
                 <input id="session-submit-button" type="submit" className="hidden" value="Login"></input> 
              </div>

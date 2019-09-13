@@ -33,7 +33,6 @@ const Header = ({ currentUser, logout }) => {
     </div>
   );
 
-
   const greetingLogout = () => (
     <div className="header-content">
       <a id="header-logo" href="#">DRIP</a>
