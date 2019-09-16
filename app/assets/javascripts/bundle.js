@@ -455,15 +455,13 @@ __webpack_require__.r(__webpack_exports__);
 var Home = function Home() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "hero-img-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "hero-img-subheader"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "featured-release"
+    className: "hero-img-subheader"
   }, "Featured Release"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "hero-feat-sneaker-model"
+    className: "hero-model"
   }, "SACAI X LDWaffle 'Black'"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "hero-cta"
-  }, "Shop Now"))));
+  }, "Shop Now")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
