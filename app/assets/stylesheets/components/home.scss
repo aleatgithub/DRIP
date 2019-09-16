@@ -1,6 +1,57 @@
-.master-div {
-  position: relative;
-  width: 100%;
 
 
+.hero-img-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 660px;
+    text-align: center;
+    margin-top: -9px;
+    background: url(https://cms-cdn.goat.com/1500/3fc3edd34736-c14a-9e11-2a5d-0570efc3) center center / cover rgb(255, 255, 255);
+    padding: 24px;
+    background-position: center center;
+    overflow: hidden;
+}
+
+
+// @media screen and (max-width: 740px) {
+//  .hero-img-cntainer {
+//     padding: 24px;
+//  }
+// }
+
+@media (min-width: 40em) {
+.hero-img-container {
+    height: 56.25vw;
+    max-height: 700px;
+    text-align: left;
+    padding: 90px;
+ }
+}
+
+
+.hero-img-cntainer > div {
+  position: absolute;
+    bottom: 40px;
+    left: 24px;
+    right: 24px;
+}
+
+.hero-img-subheader {
+    margin-top: auto;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.feature-link {
+    position: absolute;
+    z-index: 0;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    content: "";
+    cursor: pointer;
 }

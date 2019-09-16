@@ -1,3 +1,4 @@
+
 import React from 'react';
 import SneakerIndexItem from './sneaker_index_item';
 import { Link } from 'react-router-dom';
@@ -13,7 +14,7 @@ class SneakerIndex extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="test-div">
         <p className="index-header">Shop All</p>
         <div className="sneaker-index-container">
           <ul className="sneaker-items-container">

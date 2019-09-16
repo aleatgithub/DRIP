@@ -19,11 +19,26 @@
  @import "./reset.scss";
 
 
+
 body {
+  max-width: 1440px;
+  outline: 1px solid black;
+  margin: auto;
   font-family: 'Josefin Sans', serif;
   font-size: 16px;
   font-weight: 400;
 }
 
+
+// .main-content-container {
+//   margin: auto;
+//   max-width: 1440px;
+//   border-left: 1px solid black;
+//   border-right: 1px solid black;
+//   margin: auto;
+//   margin-bottom: 90px;
+//   border-bottom: 1px solid #ccc;
+//   text-transform: uppercase;
+// }
 
 @import "components/*";

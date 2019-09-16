@@ -2,8 +2,10 @@ import React from 'react';
 import Header from "./header/header_container";
 import SignupFormContainer from './session_forms/signup_form_container';
 import LoginFormContainer from './session_forms/login_form_container';
+import SneakerIndexContainer from './sneaker/sneaker_index_container';
 import { AuthRoute } from '../util/route_util';
 import Footer from './footer/footer';
+import Home from './home/home';
 import {
   Route,
   Redirect,
@@ -13,26 +15,30 @@ import {
 } from 'react-router-dom';
 
 
+
 const App = () => (
 
-  <div className="master-div">
-    <header  id="transformable">
-      <Header/>  
+  <div>
+    <header id="transformable">
+      <Header/> 
     </header>
-    
+
+
+    <main className="main-content-container"> 
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/"/>
+       <Route path="/sneakers" component={SneakerIndexContainer} />
+      <Route exact path="/" component={Home}/>
     </Switch>
-    
+    </main> 
+
     <footer>
       <Footer/>
     </footer>
   </div>
 )
 
-//if scrolly is > 1 
-//change class 
+
 export default App;
 
