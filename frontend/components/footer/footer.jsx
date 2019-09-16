@@ -7,10 +7,10 @@ const Footer = () => (
     <div className="footer-top-links">
 
       <div className="platform-links">
-        <a href="https://github.com/aleatgithub" id="platform-link-boxes">
+        <a href="https://www.linkedin.com/in/aleatlinked/" id="platform-link-boxes">
           <i className="fab fa-linkedin"></i>
         </a>
-        <a href="https://www.linkedin.com/feed/" id="platform-link-boxes">
+        <a href="https://github.com/aleatgithub/" id="platform-link-boxes">
           <i className="fab fa-github"></i></a>
         <a href="https://github.com/aleatgithub/DRIP" id="platform-link-boxes">
           <i className="fab fa-github"></i></a>
