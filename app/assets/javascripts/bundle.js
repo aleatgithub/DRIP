@@ -298,17 +298,17 @@ var Footer = function Footer() {
     className: "platform-links"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://github.com/aleatgithub",
-    className: "platform-link-boxes"
+    id: "platform-link-boxes"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-linkedin"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.linkedin.com/feed/",
-    className: "platform-link-boxes"
+    id: "platform-link-boxes"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-github"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://github.com/aleatgithub/DRIP",
-    className: "platform-link-boxes"
+    id: "platform-link-boxes"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-github"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
