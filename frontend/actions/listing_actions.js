@@ -1,10 +1,10 @@
-import * as ListingUtil from './util/listing_api_util';
+import * as ListingUtil from '../util/listing_api_util';
 
-const RECEIVE_LISTINGS = "RECEIVE_LISTINGS";
+export const RECEIVE_LISTINGS = "RECEIVE_LISTINGS";
 
 
 const receiveListings = (listings) => ({
-  type: RECEIVE_ALL_LISTINGS,
+  type: RECEIVE_LISTINGS,
   listings
 });
 

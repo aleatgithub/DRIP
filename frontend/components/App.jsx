@@ -30,7 +30,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route path="/sneakers/:sneakerId" component={SneakerShowContainer} />
-       <Route path="/sneakers" component={SneakerIndexContainer} />
+      <Route path="/sneakers" component={SneakerIndexContainer} />
       <Route exact path="/" component={Home}/>
     </Switch>
     </main> 

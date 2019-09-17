@@ -10,20 +10,21 @@ class SneakerIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchSneakers();
+    window.scrollTo(0, 0);
   }
 
   render() {
     return (
       <div>
         <div>
-          <h3 className="index-header" >Shop All</h3>
+          <h3 className="index-header">Shop All</h3>
           </div>
           <ul className="sneaker-items-container">
             {
               this.props.sneakers.map((sneaker, idx) => {
                 return (
                   <Link to={`/sneakers/${sneaker.id}`} key={idx} >
-                    <SneakerIndexItem sneaker={sneaker} key={idx} />
+                    <SneakerIndexItem sneaker={sneaker} key={idx}/>
                   </Link>
                 )
               })

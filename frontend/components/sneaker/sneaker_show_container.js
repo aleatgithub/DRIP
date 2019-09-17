@@ -4,8 +4,8 @@ import SneakerShow from './sneaker_show';
 
 const  msp = (state, ownProps) => ({
   sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
-  listings: Object.values(state.entities.listings),
-  showingListings: ownProps.location.pathname.includes('listings')
+  listings: Object.values(state.entities.listings)
+  // showingListings: ownProps.location.pathname.includes('listings')
 });
 
 const mdp = (dispatch) => ({
@@ -13,3 +13,4 @@ const mdp = (dispatch) => ({
 });
 
 export default connect(msp, mdp)(SneakerShow);
+

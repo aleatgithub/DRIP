@@ -5,5 +5,3 @@ export const fetchListings = (sneakerId) => {
   });
 };
 
-
-

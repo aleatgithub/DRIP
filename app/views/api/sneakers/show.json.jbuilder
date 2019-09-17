@@ -1,6 +1,3 @@
-json.sneaker do
-  json.partial! 'api/sneakers/sneaker', sneaker: @sneaker
-end
 
 json.sneaker do
   json.partial! 'api/sneakers/sneaker', sneaker: @sneaker
