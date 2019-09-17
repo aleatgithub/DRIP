@@ -250,9 +250,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     id: "transformable"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
-    className: "main-content-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -310,7 +308,7 @@ var Footer = function Footer() {
     href: "https://github.com/aleatgithub/DRIP",
     id: "platform-link-boxes"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fab fa-github"
+    className: "fas fa-tint"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "drip-docs"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1017,13 +1015,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "test-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "index-header"
-      }, "Shop All"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sneaker-index-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Shop All")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "sneaker-items-container"
       }, this.props.sneakers.map(function (sneaker, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -1033,7 +1027,7 @@ function (_React$Component) {
           sneaker: sneaker,
           key: idx
         }));
-      }))));
+      })));
     }
   }]);
 
@@ -1125,15 +1119,15 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "sneaker-item-name"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-item-image-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/025/302/850/original/482560_01.jpg.jpeg?1567029656",
+        src: this.props.sneaker.photoUrl,
         className: "sneaker-item-image",
         alt: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.sneaker.name)));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sneaker-item-name"
+      }, this.props.sneaker.name)));
     }
   }]);
 

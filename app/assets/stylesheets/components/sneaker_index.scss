@@ -1,0 +1,76 @@
+
+.index-header {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  font-family: GT-Sectra-Book, GT-Sectra, serif;
+  font-size: 36px;
+  padding: 80px 0px 120px;
+  position: relative;
+
+}
+
+.sneaker-items-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  // align-content: center;
+  margin: 0px auto 90px;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+.sneaker-items-container  {
+  flex-grow: 1;
+  flex-basis: auto;
+  flex: auto;
+}
+
+.sneaker-item {
+ list-style: none;
+ outline: 1px solid #B3B3B3;
+// margin-top: 1px;
+// margin-left: 1px;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.sneaker-item:hover {
+outline: 1px solid black;
+z-index: 1000;
+}
+
+.sneaker-item-image-container  {
+ overflow: hidden;
+ display: flex;
+ justify-content: center;
+ padding: 15px 22px 20px;
+//  flex: 1 1 50%;
+//  background-color: red;
+//  max-width: 55%;
+//  max-height: 55%;
+}
+
+.sneaker-item-image {
+  display: flex;
+  align-self: center;
+  max-width: 40%;
+  max-height: 40%;
+}
+
+.sneaker-item-name {
+display: flex;
+flex-flow: wrap row;
+justify-content: center;
+text-align: center;
+position: relative;
+margin: 0px 10%;
+font-family: 'Overpass', sans-serif;
+text-transform: uppercase;
+font-size: 11px;
+letter-spacing: 1px;
+background-color: red;
+}

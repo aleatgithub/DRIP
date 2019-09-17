@@ -14,9 +14,10 @@ class SneakerIndex extends React.Component {
 
   render() {
     return (
-      <div className="test-div">
-        <p className="index-header">Shop All</p>
-        <div className="sneaker-index-container">
+      <div>
+        <div>
+          <h3 className="index-header" >Shop All</h3>
+          </div>
           <ul className="sneaker-items-container">
             {
               this.props.sneakers.map((sneaker, idx) => {
@@ -29,7 +30,6 @@ class SneakerIndex extends React.Component {
             }
           </ul>
         </div>
-      </div>
     )
   }
 }

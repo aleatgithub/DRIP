@@ -10,3 +10,9 @@ json.extract! sneaker,
   :technology, 
   :designer
 
+ if sneaker.photo.attached? 
+    json.photoUrl url_for(sneaker.photo)
+  else
+    json.photoUrl ""
+  end
+

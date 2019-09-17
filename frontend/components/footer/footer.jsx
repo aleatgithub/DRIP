@@ -13,7 +13,7 @@ const Footer = () => (
         <a href="https://github.com/aleatgithub/" id="platform-link-boxes">
           <i className="fab fa-github"></i></a>
         <a href="https://github.com/aleatgithub/DRIP" id="platform-link-boxes">
-          <i className="fab fa-github"></i></a>
+          <i className="fas fa-tint"></i></a>
       </div>
       <div className="drip-docs">
       </div>
