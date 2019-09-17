@@ -10,7 +10,7 @@ class SneakerIndexItem extends React.Component {
       <div className="sneaker-item">
           <div className="sneaker-item-image-container">
             <img src={this.props.sneaker.photoUrl} className="sneaker-item-image" alt="" />
-          <span className="sneaker-item-name">{this.props.sneaker.name}</span>
+            <p className="sneaker-item-name">{this.props.sneaker.model}</p>
           </div>
       </div>
     );

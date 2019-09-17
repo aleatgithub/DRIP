@@ -1125,9 +1125,9 @@ function (_React$Component) {
         src: this.props.sneaker.photoUrl,
         className: "sneaker-item-image",
         alt: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "sneaker-item-name"
-      }, this.props.sneaker.name)));
+      }, this.props.sneaker.model)));
     }
   }]);
 
