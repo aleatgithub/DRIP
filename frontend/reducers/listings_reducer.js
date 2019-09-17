@@ -5,7 +5,8 @@ const ListingsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_LISTINGS:
-      return action.listings;
+      const listings = action.payload.listings
+      return Object.assign({}, state, listings)
     default:
       return state;
   }

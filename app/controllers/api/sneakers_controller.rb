@@ -10,7 +10,5 @@ class Api::SneakersController < ApplicationController
     render :show
   end
 
-  def sneaker_params
-    params.require(:sneaker).permit(:model, :brand, :technology)
-  end
+  
 end

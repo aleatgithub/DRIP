@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //testing
   // window.fetchSneakers = fetchSneakers;
   // window.fetchSneaker = fetchSneaker;
-
+  window.getState = store.getState;
   //end of testing
   
   const root = document.getElementById("root");

@@ -226,10 +226,10 @@ var receiveSneakers = function receiveSneakers(sneakers) {
   };
 };
 
-var receiveSneaker = function receiveSneaker(sneaker) {
+var receiveSneaker = function receiveSneaker(payload) {
   return {
     type: RECEIVE_SNEAKER,
-    sneaker: sneaker
+    payload: payload
   };
 };
 
@@ -1339,7 +1339,9 @@ function (_React$Component) {
         className: "sneaker-image"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-deets-path"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "> ", sneaker.brand, " / ", sneaker.silhouette, " / ", sneaker.model))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "sneaker-deets"
+      }, "".concat(sneaker.brand, " / ").concat(sneaker.silhouette, " / ").concat(sneaker.model)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-deets-container"
       }, this.state.showListings ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         listings: this.props.listings
@@ -1353,7 +1355,7 @@ function (_React$Component) {
         className: "fas fa-angle-down"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-description-title"
-      }, sneaker.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null), " ", sneaker.model), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-description"
       }, sneaker.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-props-table"
@@ -1484,8 +1486,9 @@ document.addEventListener("DOMContentLoaded", function () {
   } //testing
   // window.fetchSneakers = fetchSneakers;
   // window.fetchSneaker = fetchSneaker;
-  //end of testing
 
+
+  window.getState = store.getState; //end of testing
 
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1560,7 +1563,8 @@ var ListingsReducer = function ListingsReducer() {
 
   switch (action.type) {
     case _actions_listing_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LISTINGS"]:
-      return action.listings;
+      var listings = action.payload.listings;
+      return Object.assign({}, state, listings);
 
     default:
       return state;
@@ -1692,7 +1696,7 @@ var SneakersReducer = function SneakersReducer() {
       return action.sneakers;
 
     case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKER"]:
-      var sneaker = action.sneaker;
+      var sneaker = action.payload.sneaker;
       return Object.assign({}, state, _defineProperty({}, sneaker.id, sneaker));
 
     default:

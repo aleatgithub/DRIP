@@ -12,40 +12,84 @@
   border: 1px solid black;
   min-height: 600px;
   width: calc(100% - 160px);
-  background: red;
+  // background: red;
   align-self: center;
 }
 
 .sneaker-image-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-content: center;
   width: 50%;
   border-right: 1px solid black;
+
+}
+
+.sneaker-image {
+  margin-top: 20%;
+  max-width: 100%;
+  object-fit: contain;
+  align-self: center;
+  max-height: 30%;
+
 }
 
 .sneaker-deets-path {
-    margin: 2px;
+    display: flex;
     color: rgb(84, 84, 84);
-    pointer-events: auto;
-    background-color: green;
-}
+    text-transform: uppercase;
+    font-size: 12px;
+    align-content: center;
+    overflow: hidden;
+  }
+
+  #sneaker-deets {
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+  }
 
 
 .sneaker-deets-container {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  justify-content: space-between;
-  height: 100%;
-  background-color: blue;
+//  display: flex;
+//  background-color: red;
 }
 
 .sneaker-description-container {
- display: block;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
  text-align: center;
+ align-self: center;
+ align-items: center;
  margin-bottom: 65px;
  width: 50%;
- background-color: yellow;
 }
 
+.sneaker-description-button {
+  height: 90px;
+  position: relative;
+  width: 100px;
+  padding-top: 20px;
+}
+
+.sneaker-description-title > span {
+  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+  margin: 24px 0px 10px;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  line-height: 1.5;
+ 
+
+}
+.sneaker-description {
+  font-size: 16px;
+  font-family: GT-Sectra-Book;
+  letter-spacing: .1px;
+  
+}

@@ -13,7 +13,7 @@ class SneakerShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSneaker(this.props.match.params.sneakerId);
+    this.props.fetchSneaker(this.props.match.params.sneakerId)
     window.scrollTo(0, 0);
   }
 
@@ -29,6 +29,7 @@ class SneakerShow extends React.Component {
 
   render () {
     let { sneaker } = this.props;
+
     if (this.props.sneaker === undefined) return null;
 
     return (
@@ -38,7 +39,7 @@ class SneakerShow extends React.Component {
             <div className="sneaker-image-container">
               <img src={sneaker.photoUrl} alt="" className="sneaker-image" />
               <div className="sneaker-deets-path">
-                <span>> {sneaker.brand} / {sneaker.silhouette} / {sneaker.model}</span>
+               <span id="sneaker-deets">{ `${sneaker.brand} / ${sneaker.silhouette} / ${sneaker.model}` }</span>
               </div>
             </div>
 
@@ -47,14 +48,13 @@ class SneakerShow extends React.Component {
             </div>
           </div>
 
-
           <article className="sneaker-description-container">
             <button className="sneaker-description-button"> 
               <span> Details </span>
                 <i className="fas fa-angle-down"></i>
             </button>
             <div className="sneaker-description-title">
-              {sneaker.name}
+             <span></span> {sneaker.model}
             </div>
             <div className="sneaker-description">
               {sneaker.description}

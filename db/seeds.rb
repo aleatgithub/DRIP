@@ -20,13 +20,24 @@ limited_sizes = [9.0, 9.5, 10.5, 11.0, 12.5, 13.0, 13.5, 14.0, 14.5]
 
 def price_generator(min, max) 
   range = [];
-  min..max(5) {|num| range.push(num)}
+  (min..max).step(5) {|num| range.push(num)}
   return range.sample
 end
 
 
 Sneaker.destroy_all
 Listing.destroy_all
+User.destroy_all
+
+users = [
+  {
+    username: "Demo",
+    email: "demo@drip.com",
+    password: "password"
+  }
+]
+ 
+users.map! { |user| User.create(user)}
 
  jordans = [
   
@@ -252,10 +263,11 @@ Listing.destroy_all
     }
  ]
  ## Create sneakers from jordans array. 
-  jordans.map! { |sneaker| Sneaker.create(sneaker) }
+ jordans.map! { |sneaker| Sneaker.create(sneaker) }
 
+ ## Creating Listings
  jordans.each do |sneaker|
-    case sneaker[:name]
+    case sneaker[:model]
     when "Air Jordan 1 Retro High OG 'Banned' 2016"
       sizes.each do |size|
         Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(400, 700) })

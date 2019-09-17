@@ -7,7 +7,7 @@ const SneakersReducer = (state = {}, action) => {
     case RECEIVE_SNEAKERS:
       return action.sneakers;
     case RECEIVE_SNEAKER:
-      const sneaker = action.sneaker;
+      const sneaker = action.payload.sneaker;
       return Object.assign({}, state, { [sneaker.id]: sneaker });
     default:
       return state;
