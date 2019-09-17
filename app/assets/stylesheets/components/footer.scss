@@ -12,7 +12,6 @@
   color: white;
 }
 
-
 .footer-top-links {
   display: flex;
   align-items: flex-start;
@@ -75,5 +74,17 @@
     margin: 0 0 0 16px;
     color: white;
 }
+
+#platform-link-boxes:hover {
+  font-size: 150%;
+}
+
+
+
+// #platform-link-boxes:hover{ 
+//   animation: pulse 1s infinite;
+//   animation-timing-function: linear;   
+// }
+
 
 

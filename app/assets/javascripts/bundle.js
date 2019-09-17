@@ -233,10 +233,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_forms/signup_form_container */ "./frontend/components/session_forms/signup_form_container.js");
 /* harmony import */ var _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_forms/login_form_container */ "./frontend/components/session_forms/login_form_container.js");
 /* harmony import */ var _sneaker_sneaker_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sneaker/sneaker_index_container */ "./frontend/components/sneaker/sneaker_index_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
-/* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sneaker/sneaker_show_container */ "./frontend/components/sneaker/sneaker_show_container.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
+/* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -250,22 +252,25 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     id: "transformable"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/signup",
     component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
+    path: "/sneakers/:sneakerId",
+    component: _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
     path: "/sneakers",
     component: _sneaker_sneaker_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
     exact: true,
     path: "/",
-    component: _home_home__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
+    component: _home_home__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -467,6 +472,47 @@ var Home = function Home() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
+
+/***/ }),
+
+/***/ "./frontend/components/listing/listing_index.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/listing/listing_index.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var ListingIndex = function ListingIndex(_ref) {
+  var listings = _ref.listings;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-index-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-header-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    id: "buy-new"
+  }, "Buy New"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    id: "us-sizes"
+  }, "US Sizes")), listings.map(function (listing, idx) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/#",
+      className: "listing-index-item"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "listing-size"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, listing.size, "W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "listing-price"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", listing.price)));
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ListingIndex);
 
 /***/ }),
 
@@ -1135,6 +1181,199 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SneakerIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/sneaker/sneaker_props_table.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/sneaker/sneaker_props_table.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var SneakerPropsTable = function SneakerPropsTable(_ref) {
+  var props = _ref.props;
+  var sneaker = props.sneaker;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sneaker-props-table"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Release Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, sneaker.release_date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Colorway"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, sneaker.colorway)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, sneaker.brand)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Silhouette"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, sneaker.silhouette)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Designer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, sneaker.designer)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Technology"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, sneaker.technology)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SneakerPropsTable);
+
+/***/ }),
+
+/***/ "./frontend/components/sneaker/sneaker_show.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/sneaker/sneaker_show.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _listing_listing_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../listing/listing_index */ "./frontend/components/listing/listing_index.jsx");
+/* harmony import */ var _sneaker_props_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneaker_props_table */ "./frontend/components/sneaker/sneaker_props_table.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var SneakerShow =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SneakerShow, _React$Component);
+
+  function SneakerShow(props) {
+    var _this;
+
+    _classCallCheck(this, SneakerShow);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SneakerShow).call(this, props));
+    _this.state = {
+      showingListings: _this.props.showingListings
+    };
+    return _this;
+  }
+
+  _createClass(SneakerShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchSneaker(this.props.match.params.sneakerId);
+    } //showListings will help us check if we're in the listings index container. 
+
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(previousProps) {
+      if (previousProps.location.pathname !== this.props.location.pathname) {
+        this.setState({
+          showingListings: true
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var sneaker = this.props.sneaker;
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sneaker-show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sneaker-image-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sneaker-deets-path"
+      }, sneaker.brand, " / ", sneaker.silhouette, " / ", sneaker.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sneaker-deets-container"
+      }, this.state.showListings ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        listings: this.props.listings
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SneakerProfile, null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sneaker-description-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sneaker_props_table__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+    }
+  }]);
+
+  return SneakerShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SneakerShow);
+
+/***/ }),
+
+/***/ "./frontend/components/sneaker/sneaker_show_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/sneaker/sneaker_show_container.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
+/* harmony import */ var _sneaker_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneaker_show */ "./frontend/components/sneaker/sneaker_show.jsx");
+
+
+
+
+var msp = function msp(state, ownProps) {
+  return {
+    sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
+    listings: Object.values(state.entities.listings),
+    showingListings: ownProps.location.pathname.includes('listings')
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchSneaker: function fetchSneaker(id) {
+      return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneaker"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_sneaker_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
