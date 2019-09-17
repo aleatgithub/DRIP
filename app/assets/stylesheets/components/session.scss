@@ -136,7 +136,6 @@
 
 #session-submit-button {
    display: none;
-
 }
 
 .session-submit {
@@ -145,18 +144,19 @@
   box-sizing: border-box;
   width: 100%;
   border-style: solid;
-  border-top: 1px;
-  border-color: black;
   border-bottom: none;
+  border-top: 1px solid black;
   cursor: pointer;
   background-color: white;
   height: 45px;
   
 }
-.session-submit:active {
+.session-submit:hover {
   background-color: black;
   color: white;
 }
+
+
 
 #label-ssb {
   display: flex;

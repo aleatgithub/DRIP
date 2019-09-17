@@ -5,7 +5,7 @@ const SneakerProfile = ({ props }) => {
   return (
     <div className="sneaker-profile-container">
       <div className="sneaker-profile">
-        {props.sneaker.name}
+        {props.sneaker.model}
       </div>
       <button className="buy-new-button">
         <Link to={`/sneakers/${props.sneaker.id}/listings`}>

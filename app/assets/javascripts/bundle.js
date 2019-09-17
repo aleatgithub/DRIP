@@ -1238,7 +1238,7 @@ var SneakerProfile = function SneakerProfile(_ref) {
     className: "sneaker-profile-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sneaker-profile"
-  }, props.sneaker.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, props.sneaker.model), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "buy-new-button"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/sneakers/".concat(props.sneaker.id, "/listings")
@@ -1355,42 +1355,42 @@ function (_React$Component) {
         className: "fas fa-angle-down"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-description-title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null), " ", sneaker.model), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, sneaker.model), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-description"
       }, sneaker.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-props-table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prop"
+        className: "sneaker-prop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-key"
       }, "Release Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-value"
       }, sneaker.release_date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prop"
+        className: "sneaker-prop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-key"
       }, "Colorway"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-value"
       }, sneaker.colorway)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prop"
+        className: "sneaker-prop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-key"
       }, "Brand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-value"
       }, sneaker.brand)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prop"
+        className: "sneaker-prop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-key"
       }, "Silhouette"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-value"
       }, sneaker.silhouette)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prop"
+        className: "sneaker-prop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-key"
       }, "Designer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-value"
       }, sneaker.designer)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "prop"
+        className: "sneaker-prop"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prop-key"
       }, "Technology"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {

@@ -48,12 +48,66 @@
     overflow: hidden;
     text-align: center;
     font-size: 12px;
+    bottom: 10%;
   }
 
 
 .sneaker-deets-container {
-//  display: flex;
-//  background-color: red;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+
+.sneaker-profile-container {
+  margin: auto;
+  width: 100%;
+}
+
+
+.sneaker-profile {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Source Serif Pro', serif;
+  font-size: 24px;
+  padding: 0px 105px 35px;
+}
+
+.buy-new-button {
+  cursor: pointer;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  text-align: center; 
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 15px 0px;
+}
+
+.buy-used-button {
+  border-top: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  text-align: center; 
+  color: #D3D3D3;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 15px 0px;
+}
+
+.buy-new-button:hover {
+  text-decoration: underline;
+  color: white;
+  background-color: black;
 }
 
 .sneaker-description-container {
@@ -72,24 +126,50 @@
   position: relative;
   width: 100px;
   padding-top: 20px;
+
 }
 
-.sneaker-description-title > span {
-  
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 24px;
+.sneaker-description-button > span {
+  font-weight: bold;
+  margin-right: 6px;
+  letter-spacing: 1.7px;
+}
+
+.sneaker-description-button:hover {
+  cursor: pointer;
+}
+
+.sneaker-description-title {
   margin: 24px 0px 10px;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 1.7px;
   line-height: 1.5;
- 
-
+  padding-bottom: 20px;
 }
+
 .sneaker-description {
-  font-size: 16px;
+  line-height: 1.56;
+  font-size: 17px;
   font-family: GT-Sectra-Book;
   letter-spacing: .1px;
   
+}
+
+.sneaker-props-table {
+  max-width: 1000px;
+  margin: 0px auto 90px;
+  border-top: 1px solid #D3D3D3;
+}
+
+.sneaker-prop {
+  display: flex;
+  justify-content: space-between;
+  padding: 12.5px;
+  border-bottom: 1px solid #D3D3D3;
+  font-family: 'Overpass', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  color: #777777;
 }

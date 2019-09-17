@@ -54,7 +54,7 @@ class SneakerShow extends React.Component {
                 <i className="fas fa-angle-down"></i>
             </button>
             <div className="sneaker-description-title">
-             <span></span> {sneaker.model}
+              {sneaker.model}
             </div>
             <div className="sneaker-description">
               {sneaker.description}
@@ -63,27 +63,27 @@ class SneakerShow extends React.Component {
 
 
         <div className="sneaker-props-table">
-          <div className="prop">
+          <div className="sneaker-prop">
             <span className="prop-key">Release Date</span>
             <span className="prop-value">{sneaker.release_date}</span>
           </div>
-          <div className="prop">
+          <div className="sneaker-prop">
             <span className="prop-key">Colorway</span>
             <span className="prop-value">{sneaker.colorway}</span>
           </div>
-          <div className="prop">
+          <div className="sneaker-prop">
             <span className="prop-key">Brand</span>
             <span className="prop-value">{sneaker.brand}</span>
           </div>
-          <div className="prop">
+          <div className="sneaker-prop">
             <span className="prop-key">Silhouette</span>
             <span className="prop-value">{sneaker.silhouette}</span>
           </div>
-          <div className="prop">
+          <div className="sneaker-prop">
             <span className="prop-key">Designer</span>
             <span className="prop-value">{sneaker.designer}</span>
           </div>
-          <div className="prop">
+          <div className="sneaker-prop">
             <span className="prop-key">Technology</span>
             <span className="prop-value">{sneaker.technology}</span>
           </div>
