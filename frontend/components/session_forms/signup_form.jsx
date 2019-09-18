@@ -103,7 +103,7 @@ class SignupForm extends React.Component {
               </span>
             </div >
 
-            <div className="session-submit">
+            <div>
               <input id="session-submit-button" type="submit" className="hidden" value="Signup"></input>
             </div>
           </div>

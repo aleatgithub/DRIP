@@ -293,6 +293,9 @@ var App = function App() {
     path: "/signup",
     component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
+    path: "/sneakers/:sneakerId/listings",
+    component: _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
     path: "/sneakers/:sneakerId",
     component: _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Route"], {
@@ -768,9 +771,7 @@ function (_React$Component) {
         to: "/signup",
         onClick: this.clearErrors,
         className: "capital-l-links"
-      }, "Create Account +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-submit"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Create Account +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit-button",
         type: "submit",
         className: "hidden",
@@ -976,9 +977,7 @@ function (_React$Component) {
         to: "/login",
         onClick: this.clearErrors,
         className: "capital-l-links"
-      }, "+ Back"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-submit"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "+ Back"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit-button",
         type: "submit",
         className: "hidden",

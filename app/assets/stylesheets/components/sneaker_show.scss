@@ -40,7 +40,7 @@
     color: rgb(84, 84, 84);
     text-transform: uppercase;
     font-size: 12px;
-    align-content: center;
+    align-self: center;
     overflow: hidden;
   }
 
@@ -107,7 +107,7 @@
 .buy-new-button:hover {
   text-decoration: underline;
   color: white;
-  background-color: black;
+ 
 }
 
 .sneaker-description-container {
@@ -157,16 +157,19 @@
 }
 
 .sneaker-props-table {
-  max-width: 1000px;
+  width: 80%;
   margin: 0px auto 90px;
   border-top: 1px solid #D3D3D3;
 }
 
 .sneaker-prop {
+
   display: flex;
   justify-content: space-between;
   padding: 12.5px;
   border-bottom: 1px solid #D3D3D3;
+  border-left: 1px solid #D3D3D3;
+  border-right: 1px solid #D3D3D3;
   font-family: 'Overpass', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;

@@ -104,7 +104,7 @@ class LoginForm extends React.Component {
                <Link to="/signup" onClick={this.clearErrors} className="capital-l-links">Create Account +</Link>
               </span>
             </div>
-             <div className="session-submit">
+             <div>
                 <input id="session-submit-button" type="submit" className="hidden" value="Login"></input> 
              </div>
             </div>
