@@ -10,6 +10,8 @@ class SneakerShow extends React.Component {
     this.state = {
       showingListings: false
     }
+    this.showListings = this.showListings.bind(this);
+    this.hideListings = this.hideListings.bind(this);
   }
 
   componentDidMount() {
@@ -17,14 +19,16 @@ class SneakerShow extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  // showListings will help us check if we're in the listings index container. 
-  componentDidUpdate(previousProps) {
-    
-    if (previousProps.location.pathname !== this.props.location.pathname){
-      this.setState({
-        showListings: true
-      });
-    }
+  showListings () {
+    this.setState({
+      showingListings: true
+    })
+  }
+
+  hideListings () {
+    this.setState({
+      showingListings: false
+    })
   }
 
   render () {
@@ -43,10 +47,17 @@ class SneakerShow extends React.Component {
               </div>
             </div>
 
-            <div className="sneaker-deets-container">
-              {this.state.showListings ? <ListingIndex listings={this.props.listings} /> : <SneakerProfile props={this.props}/>}
+              <div className="sneaker-deets-container">
+            {this.state.showingListings ? <ListingIndex listings={this.props.listings} hideListings={this.hideListings}/> : <SneakerProfile props={this.props} />}
+                <button className="buy-new-button" onClick={this.showListings}>
+                  Buy New
+                  </button>
+                <button className="buy-used-button">
+                  Buy Used - Sold Out
+                </button>
+
+              </div>
             </div>
-          </div>
 
           <article className="sneaker-description-container">
             <button className="sneaker-description-button"> 

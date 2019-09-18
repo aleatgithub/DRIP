@@ -526,18 +526,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ListingIndex = function ListingIndex(_ref) {
-  var listings = _ref.listings;
+  var listings = _ref.listings,
+      hideListings = _ref.hideListings;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-index-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-header-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "exit-listings-button",
+    onClick: hideListings
+  }, " x "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     id: "buy-new"
   }, "Buy New"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     id: "us-sizes"
-  }, "US Sizes")), listings.map(function (listing, idx) {
+  }, "US Sizes")), listings.map(function (listing) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/#",
+      to: "/sneakers/".concat(listing.sneaker_id, "/listings/"),
       className: "listing-index-item"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "listing-size"
@@ -1228,6 +1232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _listing_listing_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../listing/listing_index */ "./frontend/components/listing/listing_index.jsx");
+
 
 
 
@@ -1237,13 +1243,7 @@ var SneakerProfile = function SneakerProfile(_ref) {
     className: "sneaker-profile-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sneaker-profile"
-  }, props.sneaker.model), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "buy-new-button"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/sneakers/".concat(props.sneaker.id, "/listings")
-  }, "Buy New")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "buy-used-button"
-  }, "Buy Used - Sold Out"));
+  }, props.sneaker.model));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SneakerProfile);
@@ -1274,9 +1274,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1302,6 +1302,8 @@ function (_React$Component) {
     _this.state = {
       showingListings: false
     };
+    _this.showListings = _this.showListings.bind(_assertThisInitialized(_this));
+    _this.hideListings = _this.hideListings.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1310,16 +1312,20 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchSneaker(this.props.match.params.sneakerId);
       window.scrollTo(0, 0);
-    } // showListings will help us check if we're in the listings index container. 
-
+    }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(previousProps) {
-      if (previousProps.location.pathname !== this.props.location.pathname) {
-        this.setState({
-          showListings: true
-        });
-      }
+    key: "showListings",
+    value: function showListings() {
+      this.setState({
+        showingListings: true
+      });
+    }
+  }, {
+    key: "hideListings",
+    value: function hideListings() {
+      this.setState({
+        showingListings: false
+      });
     }
   }, {
     key: "render",
@@ -1342,11 +1348,17 @@ function (_React$Component) {
         id: "sneaker-deets"
       }, "".concat(sneaker.brand, " / ").concat(sneaker.silhouette, " / ").concat(sneaker.model)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-deets-container"
-      }, this.state.showListings ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        listings: this.props.listings
+      }, this.state.showingListings ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        listings: this.props.listings,
+        hideListings: this.hideListings
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sneaker_profile__WEBPACK_IMPORTED_MODULE_2__["default"], {
         props: this.props
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "buy-new-button",
+        onClick: this.showListings
+      }, "Buy New"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "buy-used-button"
+      }, "Buy Used - Sold Out"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
         className: "sneaker-description-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "sneaker-description-button"
@@ -1424,8 +1436,8 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   return {
     sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
-    listings: Object.values(state.entities.listings) // showingListings: ownProps.location.pathname.includes('listings')
-
+    listings: Object.values(state.entities.listings),
+    showingListings: ownProps.location.pathname.includes('listings')
   };
 };
 
@@ -1553,6 +1565,8 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_listing_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/listing_actions */ "./frontend/actions/listing_actions.js");
+/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
+
 
 
 var ListingsReducer = function ListingsReducer() {
@@ -1561,7 +1575,7 @@ var ListingsReducer = function ListingsReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_listing_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LISTINGS"]:
+    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SNEAKER"]:
       var listings = action.payload.listings;
       return Object.assign({}, state, listings);
 

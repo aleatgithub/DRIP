@@ -56,6 +56,12 @@
  
 }
 
+.send-link-button:hover {
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+}
+
 .platform-links {
   display: flex;
   margin-top: 47px;

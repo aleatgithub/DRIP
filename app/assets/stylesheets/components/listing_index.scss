@@ -1,0 +1,88 @@
+.listing-index-container {
+  display: flex;
+  flex-direction: column;
+  // min-width: 630px;
+  // max-width: 630px;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: white;
+  z-index: 10;
+
+}
+
+.listing-header-container {
+  margin: 110px auto 75px;
+  width: 100%;
+
+}
+
+#buy-new {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #A9A9A9;
+  
+}
+
+#us-sizes {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Source Serif Pro', serif;
+  font-size: 30px;
+}
+
+.listing-index-item {
+  width: 90%;
+  margin: -1px auto 0px;
+  display: flex;
+  border-top: 1px solid #D3D3D3;
+  border-bottom: 1px solid #D3D3D3;
+  font-family: 'Overpass', sans-serif;
+ 
+}
+
+.listing-index-item:hover {
+  border: 1px solid black;
+  z-index: 100;
+}
+
+.listing-size {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  padding: 17.5px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.75px;
+}
+
+.listing-price {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  padding: 17.5px;
+  font-size: 15px;
+  font-weight: 100;
+  letter-spacing: 0.75px;
+}
+
+.listing-index-item:last-of-type {
+  margin-bottom: 30px;
+}
+
+#exit-listings-button {
+  width: 35px;
+  height: 35px;
+  position: sticky;
+  z-index: 10;
+  border: 1px solid black;
+  
+  
+}
+
+#exit-listings-button:hover {
+  cursor: pointer;
+}
