@@ -2,16 +2,22 @@ import React from 'react';
 import ListingIndex from '../listing/listing_index';
 // import SneakerPropsTable from './sneaker_props_table'
 import SneakerProfile from './sneaker_profile';
+import ListingShow from '../listing/listing_show'
 import { Link } from 'react-router-dom';
 
 class SneakerShow extends React.Component {
   constructor (props) {
     super(props); 
     this.state = {
-      showingListings: false
+      showingListings: false,
+      showingOneListing: false
     }
     this.showListings = this.showListings.bind(this);
     this.hideListings = this.hideListings.bind(this);
+    this.showOneListing = this.showOneListing.bind(this);
+    this.renderSubComponents = this.renderSubComponents.bind(this);
+    this.hideOneListing = this.hideOneListing.bind(this);
+
   }
 
   componentDidMount() {
@@ -31,6 +37,30 @@ class SneakerShow extends React.Component {
     })
   }
 
+  showOneListing () {
+    this.setState({
+      showingOneListing: true,
+      showingListings: false
+    })
+  }
+
+  hideOneListing() {
+    this.setState({
+      showingOneListing: false,
+      showingListings: true
+    })
+  }
+
+  renderSubComponents() {
+      if (this.state.showingListings) {
+        return <ListingIndex listings={this.props.listings} hideListings={this.hideListings} fetchSneaker={this.props.fetchSneaker} showOneListing={this.showOneListing}/>
+      } else if (this.state.showingOneListing) {
+        return <ListingShow hideOneListing={this.hideOneListing}/>
+      } else {
+        return <SneakerProfile props={this.props}/>
+      }
+    }
+
   render () {
     let { sneaker } = this.props;
 
@@ -48,14 +78,14 @@ class SneakerShow extends React.Component {
             </div>
 
               <div className="sneaker-deets-container">
-            {this.state.showingListings ? <ListingIndex listings={this.props.listings} hideListings={this.hideListings}/> : <SneakerProfile props={this.props} />}
+                {this.renderSubComponents()}
+  
                 <button className="buy-new-button" onClick={this.showListings}>
                   Buy New
                   </button>
                 <button className="buy-used-button">
                   Buy Used - Sold Out
                 </button>
-
               </div>
             </div>
 
@@ -71,7 +101,6 @@ class SneakerShow extends React.Component {
               {sneaker.description}
             </div>
           </article>
-
 
         <div className="sneaker-props-table">
           <div className="sneaker-prop">

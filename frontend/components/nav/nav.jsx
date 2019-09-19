@@ -13,10 +13,14 @@ const Nav = () => (
         <Link to="/sneakers">Shop All</Link>
       </li>
       <li>
-        <a href="#" className="nav-links">Search</a>
+        {/* <a href="#" className="nav-links">Search</a> */}
+        <a href="#" className="nav-links">
+          <i className="fas fa-search"></i>
+        </a>
       </li>
       <li>
-        <a href="#" className="nav-links">Menu</a>
+        {/* <a href="#" className="nav-links">Menu</a> */}
+
       </li>
     </ul>
   </div>

@@ -1,30 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+// import ListingShow from './listing_show';
 
-const ListingIndex = ( {listings, hideListings} ) => {
-
+const ListingIndex = ( {listings, hideListings, showOneListing} ) => {
 
   return (
-    <div className="listing-index-container" >
+    <div className="listing-index-container">
+      <button id="exit-listings-button" onClick={hideListings}> X </button>
+
       <div className="listing-header-container">
-        <button id="exit-listings-button" onClick={hideListings}> x </button>
         <h3 id="buy-new">Buy New</h3>
         <h2 id="us-sizes">US Sizes</h2>
       </div>
+      <div className="listing-index-items-container">
+
       {
         listings.map((listing) => {
           return (
-            <Link to={`/sneakers/${listing.sneaker_id}/listings/`} className="listing-index-item">
+            <button className="listing-index-item"  onClick={showOneListing}>
               <div className="listing-size">
                 <span>{listing.size}W</span>
               </div>
               <div className="listing-price">
                 <span>${listing.price}</span>
               </div>
-            </Link>
+            </button>
           )
         })
       }
+      </div>
     </div>
   )
 }

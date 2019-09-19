@@ -4,6 +4,7 @@ import SignupFormContainer from './session_forms/signup_form_container';
 import LoginFormContainer from './session_forms/login_form_container';
 import SneakerIndexContainer from './sneaker/sneaker_index_container';
 import SneakerShowContainer from './sneaker/sneaker_show_container';
+import ListingShowContainer from './listing/listing_show_container';
 import { AuthRoute } from '../util/route_util';
 import Footer from './footer/footer';
 import Home from './home/home';
@@ -29,7 +30,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route path="/sneakers/:sneakerId/listings" component={SneakerShowContainer} />
+      <Route path="/sneakers/:sneakerId/listings" component={SneakerShowContainer}/>
       <Route path="/sneakers/:sneakerId" component={SneakerShowContainer} />
       <Route path="/sneakers" component={SneakerIndexContainer} />
       <Route exact path="/" component={Home}/>

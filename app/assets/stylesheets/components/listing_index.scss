@@ -1,21 +1,40 @@
 .listing-index-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   // min-width: 630px;
   // max-width: 630px;
   height: 100%;
   overflow-y: scroll;
   background-color: white;
   z-index: 10;
+  font-family: GT-Sectra-Book;
+  // background-color: green;
 
 }
 
 .listing-header-container {
-  margin: 110px auto 75px;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-around;
+  // position: fixed;
+  // top: 500px;
+  // margin: 110px auto 75px;
+  position: sticky;
+  top: 0;
   width: 100%;
+  align-items: center;
+  padding-top: 90px;
+  background-color: white;
+  // background-color: red;
 
 }
 
+// .listing-index-items-container {
+
+//   // background-color: blue;
+// }
 #buy-new {
   display: flex;
   justify-content: center;
@@ -23,7 +42,6 @@
   font-size: 10px;
   letter-spacing: 1.5px;
   color: #A9A9A9;
-  
 }
 
 #us-sizes {
@@ -34,6 +52,7 @@
   font-size: 30px;
 }
 
+
 .listing-index-item {
   width: 90%;
   margin: -1px auto 0px;
@@ -41,12 +60,13 @@
   border-top: 1px solid #D3D3D3;
   border-bottom: 1px solid #D3D3D3;
   font-family: 'Overpass', sans-serif;
+  padding-bottom: 2px;
  
 }
 
 .listing-index-item:hover {
   border: 1px solid black;
-  z-index: 100;
+  z-index: 40;
 }
 
 .listing-size {
@@ -74,15 +94,167 @@
 }
 
 #exit-listings-button {
-  width: 35px;
-  height: 35px;
+  width: 60px;
   position: sticky;
-  z-index: 10;
+  z-index: 100;
   border: 1px solid black;
-  
+  top: 0;
+  padding-top: 20px;
+  background-color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+ 
   
 }
 
 #exit-listings-button:hover {
   cursor: pointer;
+}
+
+
+// The items below could go in the listing_show.scss as soon as you find  a way to fix it. 
+
+
+.listing-show-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  // overflow-y: scroll;
+  // text-align: center;
+  z-index: 50;
+  flex: 1 1 auto;
+  font-family: GT-Sectra-Book;  
+}
+
+.listing-props-table {
+  margin: 0 auto;
+  width: 80%;
+  // margin: 0px auto 90px;
+  padding-top: 20%;
+
+  // border-top: 1px solid #D3D3D3;
+}
+
+.listing-prop {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+  border-bottom: 1px solid #D3D3D3;
+  // border-left: 1px solid #D3D3D3;
+  // border-right: 1px solid #D3D3D3;
+  border-top: 1 px solid #D3D3D3;
+  font-family: 'Overpass', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  color: #777777;
+}
+
+.listing-price-box {
+ display: flex;
+ justify-content: space-between;
+ flex-direction: row;
+ width: 80%;
+ align-self: center;
+ font-family: Josefin Sans, serif;
+ font-size: 12px;
+ text-transform: uppercase;
+ align-content: center;
+ height: 50px;
+ text-align: center;
+ border-top: 1px solid  black;
+ border-bottom: 1px solid  black;
+ border-left: 1px solid black;
+ border-right: 1px solid black;
+//  padding-top: 50%;
+}
+
+.back-to-listings-button {
+  cursor: pointer;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  text-align: center; 
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 15px 0px;
+  background-color: white;
+}
+
+.add-to-cart-button {
+  border-top: 1px solid black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  text-align: center; 
+  color: #D3D3D3;
+  background-color: white;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 15px 0px;
+
+}
+
+.back-to-listings-button:hover {
+  text-decoration: underline;
+  color: white;
+  background-color: black;
+}
+
+.add-to-cart-button:hover {
+  text-decoration: underline;
+  color: white;
+  background-color: black;
+}
+
+
+.price-and-icon {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  align-items:  center;
+  font-size: 17px;
+  font-style: inherit;
+}
+
+.square-box {
+   display: flex;
+    min-height: 30px;
+    min-width: 30px;
+    // position: fixed;
+    border: 1px solid black;
+    align-items: center;
+    margin: 0 0 0 16px;
+    color: black;
+    // background-color: red;
+    align-items: center;
+}
+
+.fa-square-full:before {
+    content: "\f45c";
+    padding-left: 6px;
+}
+
+.lowest-price {
+  // display: flex;
+  // justify-content: center;
+  text-align: center;
+  padding-top: 20px;
+  padding-right: 12px;
+}
+
+.munny {
+  position: relative;
+  padding-left: 10px;
 }
