@@ -30,7 +30,7 @@ Sneaker.destroy_all
 Listing.destroy_all
 User.destroy_all
 
-Sneaker.connection.execute('ALTER SEQUENCE sneakers_id_seq RESTART WITH 1')
+# Sneaker.connection.execute('ALTER SEQUENCE sneakers_id_seq RESTART WITH 1')
 
 users = [
   {
@@ -376,7 +376,7 @@ end
 
 
 
-Sneaker.all[0].photo.attach(
+Sneaker.first.photo.attach(
   io: open("https://drip-seeds.s3-us-west-1.amazonaws.com/test.png"),
   filename: "test.png"
 )
