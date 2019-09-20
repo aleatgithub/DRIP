@@ -30,7 +30,7 @@ Sneaker.destroy_all
 Listing.destroy_all
 User.destroy_all
 
-# Sneaker.connection.execute('ALTER SEQUENCE sneakers_id_seq RESTART WITH 1')
+Sneaker.connection.execute('ALTER SEQUENCE sneakers_id_seq RESTART WITH 1')
 
 users = [
   {
@@ -381,12 +381,10 @@ end
 #   filename: "test.png"
 # )
 
- Attaching photo to sneaker
+#  Attaching photo to sneaker
  Sneaker.all.each do |sneaker| 
   sku = sneaker.sku #not a string, it's an integer
-  puts sku
-  # photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
-
+  photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
 
   sneaker.photo.attach(
     io: photo, 
