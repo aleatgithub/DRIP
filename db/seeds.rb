@@ -377,7 +377,7 @@ end
 
 
 Sneaker.all[0].photo.attach(
-  io: open("https://drip-seeds.s3-us-west-1.amazonaws.com/test.png"),
+  io: open("https://drip-seeds.s3-us-west-1.amazonaws.com/test.png")
   filename: "test.png"
 )
 
