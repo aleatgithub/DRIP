@@ -7,6 +7,7 @@ import SneakerShowContainer from './sneaker/sneaker_show_container';
 import ListingShowContainer from './listing/listing_show_container';
 import CartItemsContainer from './cart/cart_items_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import Styles from './styles/styles';
 import Footer from './footer/footer';
 import Home from './home/home';
 import {
@@ -35,6 +36,7 @@ const App = () => (
       <Route path="/sneakers/:sneakerId" component={SneakerShowContainer} />
       <Route path="/sneakers" component={SneakerIndexContainer} />
       <Route exact path="/" component={Home}/> 
+      <Route path="/styles" component={Styles} />
       <Route exact path="/cart_items" component={CartItemsContainer} />
     </Switch>
     </main> 
