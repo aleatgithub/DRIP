@@ -12,7 +12,8 @@ const Home = () => (
               SACAI X LDWaffle 'Black'
               </h1>
               <button className="hero-cta">
-              Shop Now
+                <a href="/#/sneakers/21"></a>
+               Shop Now
               </button>
             </div>
      </div>

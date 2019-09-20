@@ -29,6 +29,7 @@ ActiveRecord::Base.transaction do
 Sneaker.destroy_all
 Listing.destroy_all
 User.destroy_all
+Sneaker.connection.execute('ALTER SEQUENCE sneakers_id_seq RESTART WITH 1')
 
 users = [
   {
@@ -263,6 +264,7 @@ users.map! { |user| User.create(user)}
       sku: 20
     }
  ]
+
  ## Create sneakers from jordans array. 
  jordans.map! { |sneaker| Sneaker.create(sneaker) }
 
@@ -345,6 +347,31 @@ users.map! { |user| User.create(user)}
   end
 
 
+sacais = [
+       {
+      model: "Sacai x LDWaffle 'Black'",
+      description: "A hybrid of two iconic Nike runners, the Sacai x LDWaffle is an experimental design typical of the Japanese fashion label's provocative aesthetic. This 'Black' version—revealed in September 2019—is executed in mesh with two-tone suede at the toe, eyestays and counter. The concept of duality is furthered by leather Swooshes, paired tongues and co-branding on the heel. A dual sculpted midsole is layered above a traditional rubber waffle outsole.",
+      release_date: "12/09/2019",
+      colorway: "Black/Anthracite-Gunsmoke",
+      brand: "Nike",
+      silhouette: "LDWaffle",
+      technology: "-",
+      designer: "Chitose Abe", 
+      sku: 21
+    }
+ ]
+ 
+ sacais.map! { |sneaker| Sneaker.create(sneaker) }
+
+ sacais.each do |sneaker|
+    case sneaker[:model]
+    when "Air Jordan 1 Retro High OG 'Banned' 2016"
+      sizes.each do |size|
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(450, 1000)})
+     end
+  end
+end
+
  ##Attaching photo to sneaker
  Sneaker.all.each do |sneaker| 
   sku = sneaker.sku #not a string, it's an integer
@@ -355,8 +382,9 @@ users.map! { |user| User.create(user)}
     filename: "#{sku}.jpeg"
   )
  end
- 
+
 end
+
 #  sku = Sneaker.first.sku 
 #  photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
 

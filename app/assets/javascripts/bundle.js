@@ -752,7 +752,8 @@ var Header = function Header(_ref) {
       className: "login-logout",
       id: "logout-button",
       onClick: logout
-    }, "Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_nav__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_nav__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/cart_items",
       className: "nav-links"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-shopping-cart"
@@ -824,7 +825,9 @@ var Home = function Home() {
     className: "hero-model"
   }, "SACAI X LDWaffle 'Black'"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "hero-cta"
-  }, "Shop Now")));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "/#/sneakers/21"
+  }), "Shop Now")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
