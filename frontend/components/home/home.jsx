@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Home = () => (
  
@@ -11,10 +12,9 @@ const Home = () => (
               <h1 className="hero-model">
               SACAI X LDWaffle 'Black'
               </h1>
-              <button className="hero-cta">
-                <a href="/#/sneakers/21"></a>
+              <Link to="/sneakers/21" className="hero-cta">
                Shop Now
-              </button>
+              </Link>
             </div>
      </div>
 )

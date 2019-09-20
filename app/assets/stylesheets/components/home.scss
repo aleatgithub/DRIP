@@ -68,7 +68,6 @@
 }
 
 
-
 .hero-cta {
   cursor: pointer;
   position: absolute;
@@ -77,9 +76,14 @@
   background-color: white;
   color: black;
   text-transform: uppercase;
-  letter-spacing: 2px;
   font-weight: bold;
   padding: 15px 50px;
+  font-size: 13px;
+}
+
+.hero-cta a {
+  font-family: GT-Sectra-Book, GT-Sectra, serif;
+  letter-spacing: 1px;
 }
 
 .hero-cta:hover {

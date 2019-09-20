@@ -819,6 +819,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 var Home = function Home() {
@@ -828,11 +830,10 @@ var Home = function Home() {
     className: "hero-img-subheader"
   }, "Featured Release"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "hero-model"
-  }, "SACAI X LDWaffle 'Black'"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "SACAI X LDWaffle 'Black'"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/sneakers/21",
     className: "hero-cta"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "/#/sneakers/21"
-  }), "Shop Now")));
+  }, "Shop Now")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -1088,7 +1089,8 @@ var Nav = function Nav() {
     to: "/styles",
     className: "nav-links"
   }, "Styles")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/sneakers"
+    to: "/sneakers",
+    className: "nav-links"
   }, "Shop All")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     className: "nav-links"
@@ -2090,9 +2092,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "styles-column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "sneakers/5"
+        to: "sneakers/12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://www.goat.com/sneakers/air-jordan-1-retro-high-og-obsidian-555088-140",
+        src: "https://sneakernews.com/wp-content/uploads/2018/09/air-jordan-1-pine-green-where-to-buy-3.jpg?w=780&h=550&crop=1",
         alt: "",
         className: "style-image",
         title: "AIR JORDAN 1 RETRO HIGH OG 'OBSIDIAN'"
@@ -2117,6 +2119,71 @@ function (_React$Component) {
         alt: "",
         className: "style-image",
         title: "Yeezy Boost 700 'Inertia'"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "styles-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/14"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/014/954/758/original/temp1537996640.jpeg",
+        alt: "",
+        className: "style-image",
+        title: "Yeezy Boost 700 'Wave Runner'"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/018/319/945/original/temp1548858660.jpeg",
+        alt: "",
+        className: "style-image",
+        title: "Travis Scott x Air Jordan 1 Low 'Mocha'"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/16"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/021/212/412/original/temp1557113529.jpeg",
+        className: "style-image",
+        title: "Air Jordan 1 Retro High OG 'Royal' 2017"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/16"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/014/577/862/original/temp1536580356.jpeg",
+        alt: "",
+        className: "style-image",
+        title: "Travis Scott x Air Jordan 1 Retro High OG 'Mocha'"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "styles-column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/19"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/024/069/627/original/temp1564420578.jpeg",
+        alt: "",
+        className: "style-image",
+        title: "Yeezy Boost 700 'Wave Runner'"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://www.goat.com/sneakers/air-jordan-1-retro-high-og-bg-bred-toe-575441-610",
+        alt: "",
+        className: "style-image",
+        title: "Travis Scott x Air Jordan 1 Low 'Mocha'"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/13"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/013/371/976/original/temp1531968677.jpeg",
+        className: "style-image",
+        title: "Air Jordan 1 Retro High OG 'Royal' 2017"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://image.goat.com/crop/750/attachments/micropost_pictures/images/010/352/542/original/685B7894-9E1A-4835-955E-39ADB849A942.jpeg",
+        alt: "",
+        className: "style-image",
+        title: "Travis Scott x Air Jordan 1 Retro High OG 'Mocha'"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "sneakers/11"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: " https://image.goat.com/crop/750/attachments/micropost_pictures/images/008/496/630/original/3D00D6C1-C60B-4C18-AEA0-B932906FCDB1.jpeg",
+        alt: "",
+        className: "style-image",
+        title: "Air Yeezy 2 SP 'Red October'"
       })))));
     }
   }]);

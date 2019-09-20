@@ -29,6 +29,7 @@ ActiveRecord::Base.transaction do
 Sneaker.destroy_all
 Listing.destroy_all
 User.destroy_all
+
 Sneaker.connection.execute('ALTER SEQUENCE sneakers_id_seq RESTART WITH 1')
 
 users = [

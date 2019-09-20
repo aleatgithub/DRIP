@@ -12,7 +12,7 @@ const Nav = () => (
       <Link to="/styles" className="nav-links">Styles</Link>
       </li>
       <li>
-        <Link to="/sneakers">Shop All</Link>
+        <Link to="/sneakers" className="nav-links">Shop All</Link>
       </li>
       <li>
         {/* <a href="#" className="nav-links">Search</a> */}
