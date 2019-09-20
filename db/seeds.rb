@@ -374,16 +374,25 @@ sacais = [
   end
 end
 
- #Attaching photo to sneaker
- Sneaker.all.each do |sneaker| 
-  sku = sneaker.sku #not a string, it's an integer
-  photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
 
-  sneaker.photo.attach(
-    io: photo, 
-    filename: "#{sku}.jpeg"
-  )
- end
+
+Sneaker.all[0].photo.attach(
+  io: open("https://drip-seeds.s3-us-west-1.amazonaws.com/test.png"),
+  filename: "test.png"
+)
+
+ #Attaching photo to sneaker
+#  Sneaker.all.each do |sneaker| 
+#   sku = sneaker.sku #not a string, it's an integer
+#   puts sku
+#   # photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
+
+
+#   sneaker.photo.attach(
+#     io: photo, 
+#     filename: "#{sku}.jpeg"
+#   )
+#  end
 
 # end
 
