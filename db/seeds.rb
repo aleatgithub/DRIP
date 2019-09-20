@@ -269,9 +269,10 @@ users.map! { |user| User.create(user)}
  ## Create sneakers from jordans array. 
  jordans.map! { |sneaker| Sneaker.create(sneaker) }
 
- ## Creating Listings
+ # Creating Listings
  jordans.each do |sneaker|
     case sneaker[:model]
+
     when "Air Jordan 1 Retro High OG 'Banned' 2016"
       sizes.each do |size|
         Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(400, 700) })
@@ -364,7 +365,7 @@ sacais = [
  
  sacais.map! { |sneaker| Sneaker.create(sneaker) }
 
- sacais.each do |sneaker|
+ sacais.each do |sneaker| 
     case sneaker[:model]
     when "Sacai x LDWaffle 'Black'"
       sizes.each do |size|
@@ -373,7 +374,7 @@ sacais = [
   end
 end
 
- ##Attaching photo to sneaker
+ #Attaching photo to sneaker
  Sneaker.all.each do |sneaker| 
   sku = sneaker.sku #not a string, it's an integer
   photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
