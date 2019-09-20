@@ -41,7 +41,7 @@
   font-size: 16px;
 
 }
-.send-link-button {
+#send-link-button {
   cursor: pointer;
   display: flex;
   margin: 50px auto;
@@ -49,14 +49,21 @@
   border: 1px solid white;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-size: 9px;
+  font-family: 'Josefin Sans', serif;
   font-weight: bold;
   padding: 15px 50px;
   color: white;
   text-transform: uppercase;
- 
 }
 
-.send-link-button:hover {
+// .send-link-button > a:link {
+//  font-family: 'Josefin Sans', serif;
+//  font-size: 13px;
+//  color: white;
+// }
+
+#send-link-button:hover {
   background-color: white;
   color: black;
   text-decoration: underline;

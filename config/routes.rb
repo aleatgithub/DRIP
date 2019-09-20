@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:new, :create]
     resource :session, only: [:create, :destroy]  
+    resources :cart_items, only: [:index, :create, :destroy]
   end
-   
-
-   root to: "static_pages#root"
+  root to: "static_pages#root"
 end

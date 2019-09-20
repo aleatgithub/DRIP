@@ -122,7 +122,7 @@ class SneakerShow extends React.Component {
         <div className="sneaker-props-table">
           <div className="sneaker-prop">
             <span className="prop-key">Release Date</span>
-            <span className="prop-value">{sneaker.release_date}</span>
+            <span className="prop-value">{sneaker.releaseDate}</span>
           </div>
           <div className="sneaker-prop">
             <span className="prop-key">Colorway</span>

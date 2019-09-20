@@ -40,6 +40,7 @@ class LoginForm extends React.Component {
   }
 
   handleDemo() {
+    this.clearErrors();
     this.props.login(this.demoUser)
   }
 

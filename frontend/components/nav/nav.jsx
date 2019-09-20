@@ -4,6 +4,8 @@ import SignupFormContainer from '../session_forms/signup_form_container';
 import LoginFormContainer from '../session_forms/login_form_container';
 
 const Nav = () => (
+  
+
   <div className="main-nav"> 
     <ul className="nav-items">
       <li>

@@ -48,6 +48,7 @@ const Header = ({ currentUser, logout }) => {
       <div className="navbar">
        <button className="login-logout" id="logout-button" onClick={logout}>Log Out</button>
        <Nav/>
+        <span className="nav-links"><i className="fas fa-shopping-cart"></i></span>
       </div>
     </div>
   );

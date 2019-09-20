@@ -24,6 +24,7 @@ def price_generator(min, max)
   return range.sample
 end
 
+ActiveRecord::Base.transaction do 
 
 Sneaker.destroy_all
 Listing.destroy_all
@@ -274,19 +275,19 @@ users.map! { |user| User.create(user)}
       end
     when "Air Jordan 1 Retro High OG 'Royal' 2017"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(250, 450) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(200, 450) })
       end
     when "Air Jordan 1 Retro High OG 'Shadow' 2018"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(250, 400) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(200, 400) })
       end
     when "Air Jordan 1 Retro High OG 'Chicago' 2015"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(700, 950) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(700, 970) })
       end
     when "Air Jordan 1 Retro High OG 'Obsidian'"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(225, 400) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(235, 400) })
       end
     when "Air Jordan 1 Retro High OG 'Bred Toe'"
       sizes.each do |size|
@@ -294,7 +295,7 @@ users.map! { |user| User.create(user)}
       end
     when "Air Jordan 1 Retro High OG 'Rookie of the Year'"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(225, 400) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(325, 400) })
       end
     when "Air Jordan 1 Retro High OG NRG 'Gold Toe'"
       sizes.each do |size|
@@ -302,7 +303,7 @@ users.map! { |user| User.create(user)}
       end
     when "Travis Scott x Air Jordan 1 Retro High OG 'Mocha'"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(1000, 2250) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(1300, 2250) })
       end
     when "Air Jordan 1 Retro High OG 'Pine Green'"
       sizes.each do |size|
@@ -314,11 +315,11 @@ users.map! { |user| User.create(user)}
       end
     when "Air Jordan 1 Retro High OG 'Court Purple'"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(400, 600) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(450, 700) })
       end
     when "Air Jordan 1 Retro High OG 'UNC'"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(450, 700) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(440, 700) })
       end
     when "Air Jordan 1 Retro High OG 'Shattered Backboard'"
       sizes.each do |size|
@@ -326,7 +327,7 @@ users.map! { |user| User.create(user)}
       end
     when "Air Jordan 1 Retro High OG 'Black Toe' 2016"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(450, 750) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(450, 550) })
       end
     when "Union x Air Jordan 1 Retro High 'Black Toe'"
       sizes.each do |size|
@@ -334,11 +335,11 @@ users.map! { |user| User.create(user)}
       end
     when "Union x Air Jordan 1 Retro High 'Storm Blue'"
       sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(900, 1650) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(900, 1750) })
       end
     when "Fragment Design x Air Jordan 1 Retro High OG"
       limited_sizes.each do |size|
-        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(2150, 2750) })
+        Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(2200, 2700) })
       end
     end
   end
@@ -355,6 +356,7 @@ users.map! { |user| User.create(user)}
   )
  end
  
+end
 #  sku = Sneaker.first.sku 
 #  photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
 

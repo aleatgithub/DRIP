@@ -23,6 +23,12 @@ class ListingShow extends React.Component {
     this.props.fetchSneaker(this.props.listing.sneakerId);
   };
 
+  handleAddToCart(e) {
+    preventDefault(e);
+    this.props.addToCart(this.state);
+    this.props.history.push('/cartItems');
+  }
+
   render () {
     // debugger
    if (this.props.listing === undefined) return null; 

@@ -20,8 +20,9 @@ const Footer = () => (
     </div>
 
     <div className="footer-send-link-box">
-        <p className="send-link-text"> Send a link to your phone to download the app. </p>
-         <button className="send-link-button"> Send Link </button>
+        <p className="send-link-text"> Send a link to your phone to download GOAT: the original DRIP. </p>
+         <a href="https://bnc.lt/goat-sneaker-app" id="send-link-button"> Send Link
+           </a>
     </div>
   </div>
 );
