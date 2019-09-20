@@ -3,3 +3,4 @@
     json.extract! listing, :id, :sneaker_id, :size, :price
   end
 end
+

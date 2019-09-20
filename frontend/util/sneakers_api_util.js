@@ -11,3 +11,14 @@ export const fetchSneaker = (id) => {
     url: `/api/sneakers/${id}`
   });
 };
+
+
+// export const searchSneakers = (query, page) => {
+//   return $.ajax({
+//     method: 'GET',
+//     url: '/api/sneakers/search',
+//     remove: false,
+//     data: { query, page }
+//   });
+// };
+

@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 // import ListingShow from './listing_show';
 
-const ListingIndex = ( {listings, hideListings, showOneListing} ) => {
+const ListingIndex = ( {listings, hideListings, showOneListing, setSelectedListingId} ) => {
 
   return (
     <div className="listing-index-container">
-      <button id="exit-listings-button" onClick={hideListings}> X </button>
+      <button id="exit-listings-button" onClick={hideListings}>X</button>
 
       <div className="listing-header-container">
         <h3 id="buy-new">Buy New</h3>
@@ -17,7 +17,10 @@ const ListingIndex = ( {listings, hideListings, showOneListing} ) => {
       {
         listings.map((listing) => {
           return (
-            <button className="listing-index-item"  onClick={showOneListing}>
+            <button className="listing-index-item" onClick={() => { 
+              showOneListing(listing.id); 
+              setSelectedListingId(listing.id)}
+            }>
               <div className="listing-size">
                 <span>{listing.size}W</span>
               </div>
@@ -34,3 +37,5 @@ const ListingIndex = ( {listings, hideListings, showOneListing} ) => {
 }
 
 export default ListingIndex;
+
+// () => (showOneListing(listing.id))

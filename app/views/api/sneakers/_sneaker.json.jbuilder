@@ -6,3 +6,4 @@ json.extract! sneaker, :id, :model, :description, :sku, :release_date, :colorway
   else
     json.photoUrl ""
   end
+  

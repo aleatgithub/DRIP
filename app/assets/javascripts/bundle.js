@@ -86,6 +86,55 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/listing_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/listing_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_LISTINGS, RECEIVE_LISTING, fetchListings, fetchListing */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LISTINGS", function() { return RECEIVE_LISTINGS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LISTING", function() { return RECEIVE_LISTING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchListings", function() { return fetchListings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchListing", function() { return fetchListing; });
+/* harmony import */ var _util_listing_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/listing_api_util */ "./frontend/util/listing_api_util.js");
+
+var RECEIVE_LISTINGS = "RECEIVE_LISTINGS";
+var RECEIVE_LISTING = "RECEIVE_LISTING";
+
+var receiveListings = function receiveListings(listings) {
+  return {
+    type: RECEIVE_LISTINGS,
+    listings: listings
+  };
+};
+
+var receiveListing = function receiveListing(listing) {
+  return {
+    type: RECEIVE_LISTING,
+    listing: listing
+  };
+};
+
+var fetchListings = function fetchListings(sneakerId) {
+  return function (dispatch) {
+    return _util_listing_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchListings"](sneakerId).then(function (listings) {
+      return dispatch(receiveListings(listings));
+    });
+  };
+};
+var fetchListing = function fetchListing(sneakerId, listingId) {
+  return function (dispatch) {
+    return _util_listing_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchListing"](sneakerId, listingId).then(function (listing) {
+      return dispatch(receiveListing(listing));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -218,6 +267,28 @@ var fetchSneaker = function fetchSneaker(id) {
 
 /***/ }),
 
+/***/ "./frontend/actions/ui_actions.js":
+/*!****************************************!*\
+  !*** ./frontend/actions/ui_actions.js ***!
+  \****************************************/
+/*! exports provided: RECEIVE_CURRENT_LISTINGID, updateCurrentListing */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_LISTINGID", function() { return RECEIVE_CURRENT_LISTINGID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCurrentListing", function() { return updateCurrentListing; });
+// import { RECEIVE_LISTING } from "./listing_actions";
+var RECEIVE_CURRENT_LISTINGID = "RECEIVE_CURRENT_LISTINGID";
+var updateCurrentListing = function updateCurrentListing(listingId) {
+  return {
+    type: RECEIVE_CURRENT_LISTINGID,
+    listingId: listingId
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/App.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/App.jsx ***!
@@ -235,7 +306,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sneaker_sneaker_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sneaker/sneaker_index_container */ "./frontend/components/sneaker/sneaker_index_container.js");
 /* harmony import */ var _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sneaker/sneaker_show_container */ "./frontend/components/sneaker/sneaker_show_container.js");
 /* harmony import */ var _listing_listing_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listing/listing_show_container */ "./frontend/components/listing/listing_show_container.js");
-/* harmony import */ var _listing_listing_show_container__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_listing_listing_show_container__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
 /* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
@@ -499,13 +569,14 @@ __webpack_require__.r(__webpack_exports__);
 var ListingIndex = function ListingIndex(_ref) {
   var listings = _ref.listings,
       hideListings = _ref.hideListings,
-      showOneListing = _ref.showOneListing;
+      showOneListing = _ref.showOneListing,
+      setSelectedListingId = _ref.setSelectedListingId;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-index-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     id: "exit-listings-button",
     onClick: hideListings
-  }, " X "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-header-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     id: "buy-new"
@@ -516,7 +587,10 @@ var ListingIndex = function ListingIndex(_ref) {
   }, listings.map(function (listing) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "listing-index-item",
-      onClick: showOneListing
+      onClick: function onClick() {
+        showOneListing(listing.id);
+        setSelectedListingId(listing.id);
+      }
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "listing-size"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, listing.size, "W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -525,7 +599,7 @@ var ListingIndex = function ListingIndex(_ref) {
   })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ListingIndex);
+/* harmony default export */ __webpack_exports__["default"] = (ListingIndex); // () => (showOneListing(listing.id))
 
 /***/ }),
 
@@ -540,58 +614,110 @@ var ListingIndex = function ListingIndex(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-var ListingShow = function ListingShow(_ref) {
-  var listing = _ref.listing,
-      hideOneListing = _ref.hideOneListing;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-show-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-price-box"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "price-and-icon"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "square-box"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fas fa-square-full"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "munny"
-  }, "$100")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "lowest-price"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Lowest Price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-props-table"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-prop"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-key"
-  }, "Sneaker"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-value"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-prop"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-key"
-  }, "Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-value"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-prop"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-key"
-  }, "Condition"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-value"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "listing-prop"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-key"
-  }, "Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "prop-value"
-  }, "Good Condition"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "back-to-listings-button",
-    onClick: hideOneListing
-  }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "add-to-cart-button"
-  }, "Add To Cart"));
-};
+
+var ListingShow =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ListingShow, _React$Component);
+
+  function ListingShow(props) {
+    var _this;
+
+    _classCallCheck(this, ListingShow);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListingShow).call(this, props));
+    _this.state = {
+      listing: {
+        price: "",
+        size: "",
+        sneakerId: 0
+      }
+    };
+    return _this;
+  }
+
+  _createClass(ListingShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.props.fetchListing(parseInt(this.props.match.params.sneakerId), this.props.listingId).then(function () {
+        return _this2.setState({
+          listing: _this2.props.listing
+        });
+      });
+      this.props.fetchSneaker(this.props.listing.sneakerId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // debugger
+      if (this.props.listing === undefined) return null; // let { listing } = this.state; 
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "listing-show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "listing-price-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "price-and-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "square-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-square-full"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "munny"
+      }, "$", this.props.listing.price, ".00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lowest-price"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Lowest Price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "listing-props-table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "listing-prop"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "prop-key"
+      }, "Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "prop-value"
+      }, this.props.listing.size, " W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "listing-prop"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "prop-key"
+      }, "Condition"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "prop-value"
+      }, "New")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "listing-prop"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "prop-key"
+      }, "Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "prop-value"
+      }, "Good Condition"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "back-to-listings-button",
+        onClick: this.props.hideOneListing
+      }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add-to-cart-button"
+      }, "Add To Cart"));
+    }
+  }]);
+
+  return ListingShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (ListingShow);
 
@@ -601,21 +727,41 @@ var ListingShow = function ListingShow(_ref) {
 /*!***************************************************************!*\
   !*** ./frontend/components/listing/listing_show_container.js ***!
   \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// import { connect } from 'react-redux';
-// import { fetchSneaker } from '../../actions/sneaker_actions';
-// import { fetchListing } from '../../actions/listing_actions'
-// import ListingShow from './listing_show';
-// const msp = (state, ownProps) => ({
-//   listing: state.entities.listings[ownProps.match.params.listingId],
-// });
-// const mdp = (dispatch) => ({
-//   fetchListing: (id) => dispatch(fetchListing(id)),
-//   fetchSneaker: (id) => dispatch(fetchSneaker(id))
-// });
-// export default connect(msp, mdp)(ListingShow);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
+/* harmony import */ var _actions_listing_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/listing_actions */ "./frontend/actions/listing_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _listing_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./listing_show */ "./frontend/components/listing/listing_show.jsx");
+
+
+
+
+
+
+var msp = function msp(state, ownProps) {
+  return {
+    listing: state.ui.currentListingId !== 0 ? state.entities.listings[state.ui.currentListingId] : {},
+    sneaker: state.entities.sneakers[ownProps.match.params.sneakerId]
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchListing: function fetchListing(sneakerId, listingId) {
+      return dispatch(Object(_actions_listing_actions__WEBPACK_IMPORTED_MODULE_2__["fetchListing"])(sneakerId, listingId));
+    },
+    fetchSneaker: function fetchSneaker(id) {
+      return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneaker"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_listing_show__WEBPACK_IMPORTED_MODULE_4__["default"])));
 
 /***/ }),
 
@@ -1326,7 +1472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _listing_listing_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../listing/listing_index */ "./frontend/components/listing/listing_index.jsx");
 /* harmony import */ var _sneaker_profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneaker_profile */ "./frontend/components/sneaker/sneaker_profile.jsx");
-/* harmony import */ var _listing_listing_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listing/listing_show */ "./frontend/components/listing/listing_show.jsx");
+/* harmony import */ var _listing_listing_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listing/listing_show_container */ "./frontend/components/listing/listing_show_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -1366,17 +1512,26 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SneakerShow).call(this, props));
     _this.state = {
       showingListings: false,
-      showingOneListing: false
+      showingOneListing: false,
+      selectedListingId: null
     };
     _this.showListings = _this.showListings.bind(_assertThisInitialized(_this));
     _this.hideListings = _this.hideListings.bind(_assertThisInitialized(_this));
     _this.showOneListing = _this.showOneListing.bind(_assertThisInitialized(_this));
     _this.renderSubComponents = _this.renderSubComponents.bind(_assertThisInitialized(_this));
     _this.hideOneListing = _this.hideOneListing.bind(_assertThisInitialized(_this));
+    _this.setSelectedListingId = _this.setSelectedListingId.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(SneakerShow, [{
+    key: "setSelectedListingId",
+    value: function setSelectedListingId(id) {
+      this.setState({
+        selectedListingId: id
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSneaker(this.props.match.params.sneakerId);
@@ -1385,6 +1540,7 @@ function (_React$Component) {
   }, {
     key: "showListings",
     value: function showListings() {
+      console.log("I'm getting hit.");
       this.setState({
         showingListings: true
       });
@@ -1398,12 +1554,19 @@ function (_React$Component) {
     }
   }, {
     key: "showOneListing",
-    value: function showOneListing() {
+    value: function showOneListing(id) {
+      var _this2 = this;
+
+      console.log(id);
       this.setState({
         showingOneListing: true,
         showingListings: false
+      }, function () {
+        return _this2.props.updateCurrentListing(id);
       });
-    }
+    } //update UI slice of state -> current_listing - to this listing
+    // () => updateCurrentListing(id))
+
   }, {
     key: "hideOneListing",
     value: function hideOneListing() {
@@ -1420,11 +1583,13 @@ function (_React$Component) {
           listings: this.props.listings,
           hideListings: this.hideListings,
           fetchSneaker: this.props.fetchSneaker,
-          showOneListing: this.showOneListing
+          showOneListing: this.showOneListing,
+          setSelectedListingId: this.setSelectedListingId
         });
       } else if (this.state.showingOneListing) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_show__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          hideOneListing: this.hideOneListing
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_show_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          hideOneListing: this.hideOneListing,
+          listingId: this.state.selectedListingId
         });
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sneaker_profile__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1513,7 +1678,9 @@ function (_React$Component) {
   return SneakerShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (SneakerShow);
+/* harmony default export */ __webpack_exports__["default"] = (SneakerShow); // .then(() => {
+//   this.props.fetchListing((this.props.match.params.sneakerId), (this.props.listing.id))
+// })
 
 /***/ }),
 
@@ -1529,6 +1696,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
 /* harmony import */ var _sneaker_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneaker_show */ "./frontend/components/sneaker/sneaker_show.jsx");
+/* harmony import */ var _actions_listing_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/listing_actions */ "./frontend/actions/listing_actions.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+
+
 
 
 
@@ -1537,7 +1708,8 @@ var msp = function msp(state, ownProps) {
   return {
     sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
     listings: Object.values(state.entities.listings),
-    showingListings: ownProps.location.pathname.includes('listings')
+    showingListings: ownProps.location.pathname.includes('listings') // listing: state.ui.currentListingId !== 0 ? state.entities.listings[state.ui.currentListingId] : {}
+
   };
 };
 
@@ -1545,6 +1717,12 @@ var mdp = function mdp(dispatch) {
   return {
     fetchSneaker: function fetchSneaker(id) {
       return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneaker"])(id));
+    },
+    fetchListing: function fetchListing(sneakerId, listingId) {
+      return dispatch(Object(_actions_listing_actions__WEBPACK_IMPORTED_MODULE_3__["fetchListing"])(sneakerId, listingId));
+    },
+    updateCurrentListing: function updateCurrentListing(listingId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["updateCurrentListing"])(listingId));
     }
   };
 };
@@ -1599,7 +1777,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // window.fetchSneaker = fetchSneaker;
 
 
-  window.getState = store.getState; //end of testing
+  window.getState = store.getState;
+  window.store = store; //end of testing
 
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1703,6 +1882,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
+
 
 
 
@@ -1710,7 +1891,8 @@ __webpack_require__.r(__webpack_exports__);
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -1823,6 +2005,42 @@ var SneakersReducer = function SneakersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+
+var defaultState = {
+  currentListingId: 0
+};
+
+var uiReducer = function uiReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_LISTINGID"]:
+      var listingId = action.listingId;
+      return Object.assign({}, state, {
+        currentListingId: listingId
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (uiReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/users_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/users_reducer.js ***!
@@ -1876,10 +2094,36 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/listing_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/listing_api_util.js ***!
+  \*******************************************/
+/*! exports provided: fetchListings, fetchListing */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchListings", function() { return fetchListings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchListing", function() { return fetchListing; });
+var fetchListings = function fetchListings(sneakerId) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/sneakers/".concat(sneakerId, "/listings")
+  });
+};
+var fetchListing = function fetchListing(sneakerId, listingId) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/sneakers/".concat(sneakerId, "/listings/").concat(listingId)
+  });
+};
 
 /***/ }),
 
@@ -1988,7 +2232,14 @@ var fetchSneaker = function fetchSneaker(id) {
     method: 'GET',
     url: "/api/sneakers/".concat(id)
   });
-};
+}; // export const searchSneakers = (query, page) => {
+//   return $.ajax({
+//     method: 'GET',
+//     url: '/api/sneakers/search',
+//     remove: false,
+//     data: { query, page }
+//   });
+// };
 
 /***/ }),
 

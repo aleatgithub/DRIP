@@ -9,7 +9,7 @@ export const fetchListings = (sneakerId) => {
 export const fetchListing = (sneakerId, listingId) => {
   return $.ajax({
     method: 'GET', 
-    url: `/api/sneakers/${sneakerId}/${listingId}/listings`,
+    url: `/api/sneakers/${sneakerId}/listings/${listingId}`,
   });
 }
 

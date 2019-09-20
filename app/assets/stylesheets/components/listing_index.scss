@@ -11,7 +11,6 @@
   z-index: 10;
   font-family: GT-Sectra-Book;
   // background-color: green;
-
 }
 
 .listing-header-container {
@@ -28,7 +27,6 @@
   padding-top: 90px;
   background-color: white;
   // background-color: red;
-
 }
 
 // .listing-index-items-container {
@@ -57,7 +55,7 @@
   width: 90%;
   margin: -1px auto 0px;
   display: flex;
-  border-top: 1px solid #D3D3D3;
+  // border-top: 1px solid #D3D3D3;
   border-bottom: 1px solid #D3D3D3;
   font-family: 'Overpass', sans-serif;
   padding-bottom: 2px;
@@ -67,6 +65,7 @@
 .listing-index-item:hover {
   border: 1px solid black;
   z-index: 40;
+  cursor: pointer;
 }
 
 .listing-size {
@@ -94,15 +93,19 @@
 }
 
 #exit-listings-button {
-  width: 60px;
   position: sticky;
+  min-height: 30px;
+  min-width: 30px;
+  text-align: center;
   z-index: 100;
   border: 1px solid black;
   top: 0;
-  padding-top: 20px;
   background-color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
+  align-self: flex-end;
+  top: 40px;
+  right: 20px;
  
   
 }
@@ -196,7 +199,7 @@
   right: 0;
   width: 50%;
   text-align: center; 
-  color: #D3D3D3;
+  // color: #D3D3D3;
   background-color: white;
   text-transform: uppercase;
   font-size: 11px;
@@ -229,7 +232,7 @@
 }
 
 .square-box {
-   display: flex;
+    display: flex;
     min-height: 30px;
     min-width: 30px;
     // position: fixed;
@@ -258,3 +261,4 @@
   position: relative;
   padding-left: 10px;
 }
+
