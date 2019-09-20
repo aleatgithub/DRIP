@@ -24,7 +24,7 @@ def price_generator(min, max)
   return range.sample
 end
 
-ActiveRecord::Base.transaction do 
+# ActiveRecord::Base.transaction do 
 
 Sneaker.destroy_all
 Listing.destroy_all
@@ -366,7 +366,7 @@ sacais = [
 
  sacais.each do |sneaker|
     case sneaker[:model]
-    when "Air Jordan 1 Retro High OG 'Banned' 2016"
+    when "Sacai x LDWaffle 'Black'"
       sizes.each do |size|
         Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(450, 1000)})
      end
@@ -384,19 +384,5 @@ end
   )
  end
 
-end
+# end
 
-#  sku = Sneaker.first.sku 
-#  photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/#{sku}.jpeg")
-
-#   sneaker.photo.attach(
-#     io: photo, 
-#     filename: "#{sku}.jpeg"
-#   )
-
-#    photo = open("https://drip-seeds.s3-us-west-1.amazonaws.com/1.jpeg")
-
-#    sneaker.photo.attach(
-#     io: photo, 
-#     filename: "1.jpeg"
-#   )
