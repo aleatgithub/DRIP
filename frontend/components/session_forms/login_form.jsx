@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
         </div>
 
        <div className="parent-login-box">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+        <form className="login-form-box">
           <h4 id="login-title">Log in</h4>
 
             <div className="session-errors">
@@ -84,8 +84,7 @@ class LoginForm extends React.Component {
              <label>
               <span id="input-text">Email Address</span>
               <input type="text"
-                 value={this.state.email}
-                 onChange={this.update('email')}
+
                  className="login-input-field"
                />
              </label>
@@ -93,8 +92,7 @@ class LoginForm extends React.Component {
              <label>
               <span id="input-text">Password</span>
               <input type="password"
-                 value={this.state.password}
-                 onChange={this.update('password')}
+  
                  className="login-input-field"
                />
              </label>
@@ -102,7 +100,7 @@ class LoginForm extends React.Component {
              <br/>
             <div className="signup-link-container">
               <span id="signup-link">
-               <Link to="/signup" onClick={this.clearErrors} className="capital-l-links">Create Account +</Link>
+               <Link to="/signup" className="capital-l-links">Create Account +</Link>
               </span>
             </div>
              <div>
@@ -111,7 +109,7 @@ class LoginForm extends React.Component {
             </div>
 
             <div className="demo-button-container">
-              <button onClick={this.handleDemo} id="demo-button">DEMO +</button>
+              <button id="demo-button" onClick={this.handleDemo}>DEMO +</button>
             </div>
             
           </form>

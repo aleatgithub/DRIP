@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 const Home = () => (
  
      <div>
-
         <div className="hero-img-container"> 
             <h3 className="hero-img-subheader">
               Featured Release

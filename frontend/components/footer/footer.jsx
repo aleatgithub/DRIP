@@ -22,7 +22,7 @@ const Footer = () => (
     <div className="footer-send-link-box">
         <p className="send-link-text"> Send a link to your phone to download GOAT: the original DRIP. </p>
          <a href="https://bnc.lt/goat-sneaker-app" id="send-link-button"> Send Link
-           </a>
+          </a>
     </div>
   </div>
 );

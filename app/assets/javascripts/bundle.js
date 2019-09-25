@@ -1252,7 +1252,6 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "parent-login-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         id: "login-title"
@@ -1264,15 +1263,11 @@ function (_React$Component) {
         id: "input-text"
       }, "Email Address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: this.state.email,
-        onChange: this.update('email'),
         className: "login-input-field"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "input-text"
       }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
-        value: this.state.password,
-        onChange: this.update('password'),
         className: "login-input-field"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-link-container"
@@ -1280,7 +1275,6 @@ function (_React$Component) {
         id: "signup-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
-        onClick: this.clearErrors,
         className: "capital-l-links"
       }, "Create Account +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit-button",
@@ -1290,8 +1284,8 @@ function (_React$Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "demo-button-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDemo,
-        id: "demo-button"
+        id: "demo-button",
+        onClick: this.handleDemo
       }, "DEMO +"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -32631,7 +32625,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
