@@ -13,12 +13,12 @@ export const fetchSneaker = (id) => {
 };
 
 
-// export const searchSneakers = (query, page) => {
-//   return $.ajax({
-//     method: 'GET',
-//     url: '/api/sneakers/search',
-//     remove: false,
-//     data: { query, page }
-//   });
-// };
+export const searchSneakers = (query, page) => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/sneakers/search',
+    remove: false,
+    data: { query, page }
+  });
+};
 

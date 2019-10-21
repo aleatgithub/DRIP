@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :sneakers, only: [:index, :show] do
       resources :listings, only: [:index, :show]
+      get 'search', on: :collection
     end
     resources :users, only: [:new, :create]
     resource :session, only: [:create, :destroy]  

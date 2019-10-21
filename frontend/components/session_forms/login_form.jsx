@@ -44,7 +44,6 @@ class LoginForm extends React.Component {
     this.props.login(this.demoUser)
   }
 
-  // setTimeout(this.clearErrors, 10000)
 
   componentWillUnmount() {
     this.clearErrors();

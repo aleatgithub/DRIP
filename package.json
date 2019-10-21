@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "loader": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
@@ -13,8 +14,15 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "ret": "^0.3.1",
+    "v8-compile-cache": "^2.1.0",
+    "validation": "0.0.1",
+    "validator": "^11.1.0",
+    "webassembly": "^0.11.0",
+    "webassemblyjs": "^1.8.5",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "yargs": "^14.2.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
@@ -29,8 +37,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --mode=development",
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "start": "webpack --watch --mode=development"
   },
   "repository": {
     "type": "git",
