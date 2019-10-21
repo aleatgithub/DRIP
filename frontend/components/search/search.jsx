@@ -1,5 +1,7 @@
 import React from 'react';
+import Link from 'react-router-dom';
 import SearchResult from './search_result';
+import SneakerIndexItem from '../sneaker/sneaker_index_item';
 
 class Search extends React.Component {
   constructor(props) {
@@ -44,6 +46,19 @@ class Search extends React.Component {
   }
 
   render() {
+
+    let loadDisplay = this.props.sneakers.length < this.props.sneakerCount ? (
+      <button className="load-more" onClick={this.loadMore}>
+        See More
+      </button>
+    ) : (
+        <div></div>
+      )
+
+    if (this.props.sneakers.length === 0) {
+      loadDisplay = <div></div>
+    }
+
     return (
       <div>
         <section className="search-container">
@@ -54,11 +69,10 @@ class Search extends React.Component {
           </div>
         </section>
         <section className="search-results">
-          {/* <SearchResult
+          <SearchResult
             sneakers={this.props.sneakers}
             search={this.state.search}
-            searchResults={this.props.sneakerCount}
-          /> */}
+            />
         </section>
         <div className="load-more-container">
         </div>

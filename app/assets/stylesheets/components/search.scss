@@ -2,9 +2,8 @@
   display: flex;
 }
 
-
 .search-bar-container {
-  width: 1000px;
+  width: 100%;
   border: 1px solid black;
   margin: auto;
   margin-top: 10px;
@@ -14,6 +13,7 @@
 .search-bar {
   margin: 0px 65px;
 }
+
 .search-input {
   text-transform: uppercase;
   font-family: 'Overpass', sans-serif;

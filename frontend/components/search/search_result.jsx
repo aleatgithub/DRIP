@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import SneakerIndexItem from '../sneaker/sneaker_index_item';
 
 
-const SearchResult = ({ sneakers, search, searchResults }) => {
+const SearchResult = ({ sneakers, search }) => {
 
   if (sneakers.length) {
     return (
       <div>
-        <p> Showing Results {`${sneakers.length}`} results</p>
+        <p className="search-results-header">
+          Showing Results 1-{`${sneakers.length}`} out of X.
+        </p>
+        <div>
           <ul className="sneaker-items-container">
             {
-              this.props.sneakers.map((sneaker, idx) => {
+              Object.values(sneakers).map((sneaker, idx) => {
                 return (
                   <Link to={`/sneakers/${sneaker.id}`} key={idx} >
                     <SneakerIndexItem sneaker={sneaker} key={idx} />
@@ -19,7 +22,8 @@ const SearchResult = ({ sneakers, search, searchResults }) => {
                 )
               })
             }
-          </ul>  
+          </ul>
+        </div>
       </div>
     )
   } else if (!sneakers.length && search.length ) {
@@ -27,7 +31,7 @@ const SearchResult = ({ sneakers, search, searchResults }) => {
       <p>There are no matching results please try a different search.</p>
     )
   } else {
-    return 
+    return null;
     <div></div>
   }
 }

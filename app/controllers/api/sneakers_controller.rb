@@ -1,6 +1,7 @@
 class Api::SneakersController < ApplicationController
 
   def index
+    @sneaker_count = Sneaker.count
     @sneakers = Sneaker.all
     render :index
   end
@@ -22,7 +23,7 @@ class Api::SneakersController < ApplicationController
       @sneakers = []
     end
     
-    render :index
+    render :search
   end
 
 

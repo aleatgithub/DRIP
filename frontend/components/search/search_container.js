@@ -10,7 +10,7 @@ const msp = (state) => ({
 })
 
 const mdp = (dispatch) => ({
-  searchSneakers: debounce((query, page) => dispatch(searchSneakers(query, page)), 400),
+  searchSneakers: debounce((query, page) => dispatch(searchSneakers(query, page)), 500),
   resetSneakers: () => dispatch(resetSneakers())
 })
 

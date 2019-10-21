@@ -2,7 +2,7 @@ class Api::ListingsController < ApplicationController
 
 
   def index
-    @listings = Listing.all
+    @listings = Sneaker.find_by(id: params[:sneaker_id]).listings
     render :index
   end
 
@@ -10,5 +10,5 @@ class Api::ListingsController < ApplicationController
     @listing = Listing.find_by(id: params[:id])
   end
 
-  
+
 end

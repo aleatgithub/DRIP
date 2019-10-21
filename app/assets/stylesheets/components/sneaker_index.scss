@@ -49,10 +49,6 @@ z-index: 1000;
  justify-content: space-around;
  padding: 15px 22px 20px;
  flex-direction: column;
-//  flex: 1 1 50%;
-//  background-color: red;
-//  max-width: 55%;
-//  max-height: 55%;
 }
 
 .sneaker-item-image {
@@ -60,22 +56,17 @@ z-index: 1000;
   align-self: center;
   max-width: auto;
   max-height: 40%;
-  // margin-left: 25%;
 }
 
 .sneaker-item-name {
 display: flex;
-// flex-flow: wrap row;
 justify-content: center;
 text-align: center;
 position: relative;
-// margin: 0px 10%;
 font-family: 'Overpass', sans-serif;
 text-transform: uppercase;
 font-size: 11px;
 letter-spacing: 1px;
-// background-color: red;
-font-size: 11px;
 line-height: 15px;
 letter-spacing: 1.7px;
 text-transform: uppercase;

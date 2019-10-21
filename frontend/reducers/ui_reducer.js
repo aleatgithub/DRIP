@@ -1,5 +1,6 @@
 
-import { RECEIVE_CURRENT_LISTINGID, RECEIVE_SEARCH } from '../actions/sneaker_actions';
+import { RECEIVE_CURRENT_LISTINGID } from '../actions/ui_actions';
+import { RECEIVE_SEARCH } from '../actions/sneaker_actions';
 
 
 const defaultState = {
@@ -15,9 +16,9 @@ const uiReducer = (state = defaultState, action ) => {
    switch(action.type) {
      case RECEIVE_CURRENT_LISTINGID:
       const listingId = action.listingId;
-      return Object.assign({}, state, { currentListingId: listingId });
+      return Object.assign({}, state, { currentListingId: listingId, sneakerCount: 0 });
       case RECEIVE_SEARCH:
-        return { sneakerCount: action.sneakerCount };
+        return { sneakerCount: action.sneakerCount, currentListingId: 0 };
      default: 
      return state
    }

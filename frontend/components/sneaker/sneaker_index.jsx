@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SneakerIndexItem from './sneaker_index_item';
 import { Link } from 'react-router-dom';

@@ -1,5 +1,4 @@
 
-
 export const fetchCart = () => {
   return $.ajax({
     method: 'GET',

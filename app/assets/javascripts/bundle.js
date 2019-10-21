@@ -321,16 +321,19 @@ var receiveSneakers = function receiveSneakers(sneakers) {
   };
 };
 
-var receiveSneaker = function receiveSneaker(payload) {
+var receiveSneaker = function receiveSneaker(_ref) {
+  var sneaker = _ref.sneaker,
+      listings = _ref.listings;
   return {
     type: RECEIVE_SNEAKER,
-    payload: payload
+    sneaker: sneaker,
+    listings: listings
   };
 };
 
-var receiveSearch = function receiveSearch(_ref) {
-  var sneakers = _ref.sneakers,
-      sneaker_count = _ref.sneaker_count;
+var receiveSearch = function receiveSearch(_ref2) {
+  var sneakers = _ref2.sneakers,
+      sneaker_count = _ref2.sneaker_count;
   return {
     type: RECEIVE_SEARCH,
     sneakers: sneakers,
@@ -352,8 +355,8 @@ var fetchSneakers = function fetchSneakers() {
 };
 var fetchSneaker = function fetchSneaker(id) {
   return function (dispatch) {
-    return _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSneaker"](id).then(function (sneaker) {
-      return dispatch(receiveSneaker(sneaker));
+    return _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSneaker"](id).then(function (payload) {
+      return dispatch(receiveSneaker(payload));
     });
   };
 };
@@ -1180,7 +1183,9 @@ var Root = function Root(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _search_result__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_result */ "./frontend/components/search/search_result.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _search_result__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_result */ "./frontend/components/search/search_result.jsx");
+/* harmony import */ var _sneaker_sneaker_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../sneaker/sneaker_index_item */ "./frontend/components/sneaker/sneaker_index_item.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1198,6 +1203,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -1270,6 +1277,15 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var loadDisplay = this.props.sneakers.length < this.props.sneakerCount ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "load-more",
+        onClick: this.loadMore
+      }, "See More") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+
+      if (this.props.sneakers.length === 0) {
+        loadDisplay = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "search-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1283,7 +1299,10 @@ function (_React$Component) {
         onChange: this.handleSearch()
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "search-results"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_result__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        sneakers: this.props.sneakers,
+        search: this.state.search
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "load-more-container"
       }));
     }
@@ -1326,7 +1345,7 @@ var mdp = function mdp(dispatch) {
   return {
     searchSneakers: Object(lodash__WEBPACK_IMPORTED_MODULE_3__["debounce"])(function (query, page) {
       return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["searchSneakers"])(query, page));
-    }, 400),
+    }, 500),
     resetSneakers: function resetSneakers() {
       return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["resetSneakers"])());
     }
@@ -1350,21 +1369,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _sneaker_sneaker_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sneaker/sneaker_index_item */ "./frontend/components/sneaker/sneaker_index_item.jsx");
-var _this = undefined;
-
 
 
 
 
 var SearchResult = function SearchResult(_ref) {
   var sneakers = _ref.sneakers,
-      search = _ref.search,
-      searchResults = _ref.searchResults;
+      search = _ref.search;
 
   if (sneakers.length) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " Showing Results ", "".concat(sneakers.length), " results"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "search-results-header"
+    }, "Showing Results 1-", "".concat(sneakers.length), " out of X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "sneaker-items-container"
-    }, _this.props.sneakers.map(function (sneaker, idx) {
+    }, Object.values(sneakers).map(function (sneaker, idx) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/sneakers/".concat(sneaker.id),
         key: idx
@@ -1372,11 +1390,11 @@ var SearchResult = function SearchResult(_ref) {
         sneaker: sneaker,
         key: idx
       }));
-    })));
+    }))));
   } else if (!sneakers.length && search.length) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "There are no matching results please try a different search.");
   } else {
-    return;
+    return null;
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
   }
 };
@@ -2487,7 +2505,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   window.getState = store.getState;
-  window.store = store; //end of testing
+  window.store = store;
+  window.searchSneakers = _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_5__["searchSneakers"]; //end of testing
 
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -2597,8 +2616,7 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
-// import { RECEIVE_LISTINGS } from '../actions/listing_actions';
- // import { RECEIVE_LISTING } from '../actions/listing_actions'
+
 
 var ListingsReducer = function ListingsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -2607,8 +2625,9 @@ var ListingsReducer = function ListingsReducer() {
 
   switch (action.type) {
     case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKER"]:
-      var listings = action.payload.listings;
-      return Object.assign({}, state, listings);
+      // const listings = action.payload.listings
+      // return Object.assign({}, state, listings)
+      return action.listings;
     // case RECEIVE_LISTING: 
     //   const listing = action.listing
     //     return Object.assign({}, state, listing)
@@ -2735,19 +2754,26 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+var sneakersDefault = {};
 
 var SneakersReducer = function SneakersReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : sneakersDefault;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
   switch (action.type) {
     case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKERS"]:
-      return action.sneakers;
+      return Object.assign({}, state, action.sneakers);
 
     case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKER"]:
-      var sneaker = action.payload.sneaker;
+      var sneaker = action.sneaker;
       return Object.assign({}, state, _defineProperty({}, sneaker.id, sneaker));
+
+    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH"]:
+      return Object.assign({}, state, action.sneakers);
+
+    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RESET_SNEAKERS"]:
+      return sneakersDefault;
 
     default:
       return state;
@@ -2767,7 +2793,9 @@ var SneakersReducer = function SneakersReducer() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
+
 
 var defaultState = {
   currentListingId: 0,
@@ -2780,15 +2808,17 @@ var uiReducer = function uiReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_LISTINGID"]:
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_LISTINGID"]:
       var listingId = action.listingId;
       return Object.assign({}, state, {
-        currentListingId: listingId
+        currentListingId: listingId,
+        sneakerCount: 0
       });
 
-    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH"]:
+    case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SEARCH"]:
       return {
-        sneakerCount: action.sneakerCount
+        sneakerCount: action.sneakerCount,
+        currentListingId: 0
       };
 
     default:
