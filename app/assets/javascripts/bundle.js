@@ -890,7 +890,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
- // import ListingShow from './listing_show';
+
 
 var ListingIndex = function ListingIndex(_ref) {
   var listings = _ref.listings,
@@ -910,13 +910,14 @@ var ListingIndex = function ListingIndex(_ref) {
     id: "us-sizes"
   }, "US Sizes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-index-items-container"
-  }, listings.map(function (listing) {
+  }, listings.map(function (listing, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "listing-index-item",
       onClick: function onClick() {
         showOneListing(listing.id);
         setSelectedListingId(listing.id);
-      }
+      },
+      key: idx
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "listing-size"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, listing.size, "W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -925,7 +926,7 @@ var ListingIndex = function ListingIndex(_ref) {
   })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ListingIndex); // () => (showOneListing(listing.id))
+/* harmony default export */ __webpack_exports__["default"] = (ListingIndex);
 
 /***/ }),
 
@@ -2101,7 +2102,6 @@ function (_React$Component) {
   }, {
     key: "showListings",
     value: function showListings() {
-      console.log("I'm getting hit.");
       this.setState({
         showingListings: true
       });
@@ -2125,9 +2125,7 @@ function (_React$Component) {
       }, function () {
         return _this2.props.updateCurrentListing(id);
       });
-    } //update UI slice of state -> current_listing - to this listing
-    // () => updateCurrentListing(id))
-
+    }
   }, {
     key: "hideOneListing",
     value: function hideOneListing() {
@@ -2625,9 +2623,8 @@ var ListingsReducer = function ListingsReducer() {
 
   switch (action.type) {
     case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKER"]:
-      // const listings = action.payload.listings
-      // return Object.assign({}, state, listings)
-      return action.listings;
+      var listings = action.listings;
+      return Object.assign({}, state, listings);
     // case RECEIVE_LISTING: 
     //   const listing = action.listing
     //     return Object.assign({}, state, listing)

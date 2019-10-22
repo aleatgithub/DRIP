@@ -6,9 +6,8 @@ const ListingsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_SNEAKER:
-      // const listings = action.payload.listings
-      // return Object.assign({}, state, listings)
-      return action.listings
+      const listings = action.listings
+      return Object.assign({}, state, listings)
     // case RECEIVE_LISTING: 
     //   const listing = action.listing
     //     return Object.assign({}, state, listing)

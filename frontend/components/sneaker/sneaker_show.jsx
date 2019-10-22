@@ -33,7 +33,6 @@ class SneakerShow extends React.Component {
    }
 
   showListings () {
-    console.log("I'm getting hit.")
     this.setState({
       showingListings: true
     })
@@ -53,9 +52,6 @@ class SneakerShow extends React.Component {
       showingListings: false
     }, () => this.props.updateCurrentListing(id))
   }
-
-  //update UI slice of state -> current_listing - to this listing
-// () => updateCurrentListing(id))
 
   hideOneListing() {
     this.setState({

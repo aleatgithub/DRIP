@@ -10,5 +10,5 @@ class Api::ListingsController < ApplicationController
     @listing = Listing.find_by(id: params[:id])
   end
 
-
+ 
 end

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-// import ListingShow from './listing_show';
 
 const ListingIndex = ( {listings, hideListings, showOneListing, setSelectedListingId} ) => {
 
@@ -15,12 +14,12 @@ const ListingIndex = ( {listings, hideListings, showOneListing, setSelectedListi
       <div className="listing-index-items-container">
 
       {
-        listings.map((listing) => {
+        listings.map((listing, idx) => {
           return (
             <button className="listing-index-item" onClick={() => { 
               showOneListing(listing.id); 
               setSelectedListingId(listing.id)}
-            }>
+            } key={idx}>
               <div className="listing-size">
                 <span>{listing.size}W</span>
               </div>
@@ -38,4 +37,3 @@ const ListingIndex = ( {listings, hideListings, showOneListing, setSelectedListi
 
 export default ListingIndex;
 
-// () => (showOneListing(listing.id))
