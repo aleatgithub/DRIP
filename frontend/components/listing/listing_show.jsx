@@ -1,38 +1,10 @@
 import React from 'react';
+import Link from 'react-router-dom';
+
+const ListingShow = ({ props, sneaker, listings, currentUser }) => { 
+  const listing = listings[props.match.params.listingId];
 
 
-class ListingShow extends React.Component {
-    constructor (props) {
-      super(props);    
-      
-      this.state = {
-        listing : {
-          price: "", 
-          size: "", 
-          sneakerId: 0,
-        },
-      }
-    }
-
-  componentDidMount() {
-   this.props.fetchListing((parseInt(this.props.match.params.sneakerId)), (this.props.listingId)).then(() => (
-     this.setState({
-      listing: this.props.listing 
-    })
-   ))
-    this.props.fetchSneaker(this.props.listing.sneakerId);
-  };
-
-  handleAddToCart(e) {
-    preventDefault(e);
-    this.props.addToCart(this.state);
-    this.props.history.push('/cartItems');
-  }
-
-  render () {
-    // debugger
-   if (this.props.listing === undefined) return null; 
-    // let { listing } = this.state; 
     return (
       <div className="listing-show-container">
         <div className="listing-price-box">
@@ -40,7 +12,7 @@ class ListingShow extends React.Component {
             <span className="square-box">
               <i className="fas fa-square-full"></i> 
             </span>
-            <span className="munny">${this.props.listing.price}.00</span>
+            <span className="munny">${listing.price}.00</span>
           </div>
             <div className="lowest-price"><span>Lowest Price</span></div>
         </div>  
@@ -48,7 +20,7 @@ class ListingShow extends React.Component {
         <div className="listing-props-table">
           <div className="listing-prop">
             <span className="prop-key">Size</span>
-            <span className="prop-value">{this.props.listing.size} W</span>
+            <span className="prop-value">{listing.size} W</span>
           </div>
           <div className="listing-prop">
             <span className="prop-key">Condition</span>
@@ -60,16 +32,18 @@ class ListingShow extends React.Component {
           </div>
         </div>
 
-        <button className="back-to-listings-button" onClick={this.props.hideOneListing}>
-          Back
-        </button>
+        <Link to={`/sneakers/${listings.sneaker_id}`}>
+          <button className="back-to-listings-button">
+            Cancel
+          </button>
+        </Link>
+
         <button className="add-to-cart-button">
           Add To Cart
         </button>
       </div>
-    )
+     )
   }
-}
 
 export default ListingShow;
 

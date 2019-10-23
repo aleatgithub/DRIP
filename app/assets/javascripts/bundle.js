@@ -409,9 +409,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_forms_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_forms/login_form_container */ "./frontend/components/session_forms/login_form_container.js");
 /* harmony import */ var _sneaker_sneaker_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sneaker/sneaker_index_container */ "./frontend/components/sneaker/sneaker_index_container.js");
 /* harmony import */ var _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sneaker/sneaker_show_container */ "./frontend/components/sneaker/sneaker_show_container.js");
-/* harmony import */ var _listing_listing_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listing/listing_show_container */ "./frontend/components/listing/listing_show_container.js");
-/* harmony import */ var _cart_cart_items_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cart/cart_items_container */ "./frontend/components/cart/cart_items_container.js");
-/* harmony import */ var _search_search_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./search/search_container */ "./frontend/components/search/search_container.js");
+/* harmony import */ var _cart_cart_items_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cart/cart_items_container */ "./frontend/components/cart/cart_items_container.js");
+/* harmony import */ var _search_search_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./search/search_container */ "./frontend/components/search/search_container.js");
+/* harmony import */ var _listing_listing_show__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./listing/listing_show */ "./frontend/components/listing/listing_show.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _styles_styles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/styles */ "./frontend/components/styles/styles.jsx");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
@@ -444,6 +444,9 @@ var App = function App() {
     path: "/signup",
     component: _session_forms_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
+    path: "/sneakers/:sneakerId/listings/listingId",
+    component: _listing_listing_show__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
     path: "/sneakers/:sneakerId/listings",
     component: _sneaker_sneaker_show_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
@@ -462,10 +465,10 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
     exact: true,
     path: "/cart_items",
-    component: _cart_cart_items_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _cart_cart_items_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Route"], {
     path: "/search",
-    component: _search_search_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _search_search_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer__WEBPACK_IMPORTED_MODULE_11__["default"], null)));
 };
 
@@ -893,16 +896,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ListingIndex = function ListingIndex(_ref) {
-  var listings = _ref.listings,
-      hideListings = _ref.hideListings,
-      showOneListing = _ref.showOneListing,
-      setSelectedListingId = _ref.setSelectedListingId;
+  var listings = _ref.listings;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-index-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    id: "exit-listings-button",
-    onClick: hideListings
-  }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "sneakers/".concat(listings[0].sneakerId)
+  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "exit-listings-button"
+  }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-header-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     id: "buy-new"
@@ -911,12 +912,9 @@ var ListingIndex = function ListingIndex(_ref) {
   }, "US Sizes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-index-items-container"
   }, listings.map(function (listing, idx) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/sneakers/".concat(listing.sneakerId, "/listings/").concat(listing.id),
       className: "listing-index-item",
-      onClick: function onClick() {
-        showOneListing(listing.id);
-        setSelectedListingId(listing.id);
-      },
       key: idx
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "listing-size"
@@ -941,161 +939,60 @@ var ListingIndex = function ListingIndex(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
-var ListingShow =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ListingShow, _React$Component);
-
-  function ListingShow(props) {
-    var _this;
-
-    _classCallCheck(this, ListingShow);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListingShow).call(this, props));
-    _this.state = {
-      listing: {
-        price: "",
-        size: "",
-        sneakerId: 0
-      }
-    };
-    return _this;
-  }
-
-  _createClass(ListingShow, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.props.fetchListing(parseInt(this.props.match.params.sneakerId), this.props.listingId).then(function () {
-        return _this2.setState({
-          listing: _this2.props.listing
-        });
-      });
-      this.props.fetchSneaker(this.props.listing.sneakerId);
-    }
-  }, {
-    key: "handleAddToCart",
-    value: function handleAddToCart(e) {
-      preventDefault(e);
-      this.props.addToCart(this.state);
-      this.props.history.push('/cartItems');
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      // debugger
-      if (this.props.listing === undefined) return null; // let { listing } = this.state; 
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "listing-show-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "listing-price-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "price-and-icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "square-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-square-full"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "munny"
-      }, "$", this.props.listing.price, ".00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "lowest-price"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Lowest Price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "listing-props-table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "listing-prop"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prop-key"
-      }, "Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prop-value"
-      }, this.props.listing.size, " W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "listing-prop"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prop-key"
-      }, "Condition"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prop-value"
-      }, "New")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "listing-prop"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prop-key"
-      }, "Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prop-value"
-      }, "Good Condition"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "back-to-listings-button",
-        onClick: this.props.hideOneListing
-      }, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "add-to-cart-button"
-      }, "Add To Cart"));
-    }
-  }]);
-
-  return ListingShow;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+var ListingShow = function ListingShow(_ref) {
+  var props = _ref.props,
+      sneaker = _ref.sneaker,
+      listings = _ref.listings,
+      currentUser = _ref.currentUser;
+  var listing = listings[props.match.params.listingId];
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-show-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-price-box"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "price-and-icon"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "square-box"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-square-full"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "munny"
+  }, "$", listing.price, ".00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "lowest-price"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Lowest Price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-props-table"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, listing.size, " W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Condition"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, "New")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "listing-prop"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-key"
+  }, "Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "prop-value"
+  }, "Good Condition"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    to: "/sneakers/".concat(listings.sneaker_id)
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "back-to-listings-button"
+  }, "Cancel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "add-to-cart-button"
+  }, "Add To Cart"));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (ListingShow);
-
-/***/ }),
-
-/***/ "./frontend/components/listing/listing_show_container.js":
-/*!***************************************************************!*\
-  !*** ./frontend/components/listing/listing_show_container.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/sneaker_actions */ "./frontend/actions/sneaker_actions.js");
-/* harmony import */ var _actions_listing_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/listing_actions */ "./frontend/actions/listing_actions.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _listing_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./listing_show */ "./frontend/components/listing/listing_show.jsx");
-
-
-
-
-
-
-var msp = function msp(state, ownProps) {
-  return {
-    listing: state.ui.currentListingId !== 0 ? state.entities.listings[state.ui.currentListingId] : {},
-    sneaker: state.entities.sneakers[ownProps.match.params.sneakerId]
-  };
-};
-
-var mdp = function mdp(dispatch) {
-  return {
-    fetchListing: function fetchListing(sneakerId, listingId) {
-      return dispatch(Object(_actions_listing_actions__WEBPACK_IMPORTED_MODULE_2__["fetchListing"])(sneakerId, listingId));
-    },
-    fetchSneaker: function fetchSneaker(id) {
-      return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneaker"])(id));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_listing_show__WEBPACK_IMPORTED_MODULE_4__["default"])));
 
 /***/ }),
 
@@ -1917,7 +1814,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchSneakers: function fetchSneakers() {
       return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneakers"])());
-    }
+    },
+    resetSneakers: function (_resetSneakers) {
+      function resetSneakers() {
+        return _resetSneakers.apply(this, arguments);
+      }
+
+      resetSneakers.toString = function () {
+        return _resetSneakers.toString();
+      };
+
+      return resetSneakers;
+    }(function () {
+      return dispatch(resetSneakers());
+    })
   };
 };
 
@@ -2009,12 +1919,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SneakerProfile = function SneakerProfile(_ref) {
-  var props = _ref.props;
+  var props = _ref.props,
+      lowestPrice = _ref.lowestPrice;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sneaker-profile-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "sneaker-profile"
-  }, props.sneaker.model));
+  }, props.sneaker.model), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/sneakers/".concat(props.sneaker.id, "/listings")
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "buy-new-button"
+  }, "Buy New")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "buy-used-button"
+  }, "Buy Used - Sold Out"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SneakerProfile);
@@ -2033,9 +1950,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _listing_listing_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../listing/listing_index */ "./frontend/components/listing/listing_index.jsx");
-/* harmony import */ var _sneaker_profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneaker_profile */ "./frontend/components/sneaker/sneaker_profile.jsx");
-/* harmony import */ var _listing_listing_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listing/listing_show_container */ "./frontend/components/listing/listing_show_container.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _sneaker_profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sneaker_profile */ "./frontend/components/sneaker/sneaker_profile.jsx");
+/* harmony import */ var _listing_listing_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../listing/listing_show */ "./frontend/components/listing/listing_show.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2046,16 +1963,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import SneakerPropsTable from './sneaker_props_table'
 
 
 
@@ -2067,100 +1983,41 @@ function (_React$Component) {
   _inherits(SneakerShow, _React$Component);
 
   function SneakerShow(props) {
-    var _this;
-
     _classCallCheck(this, SneakerShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SneakerShow).call(this, props));
-    _this.state = {
-      showingListings: false,
-      showingOneListing: false,
-      selectedListingId: null
-    };
-    _this.showListings = _this.showListings.bind(_assertThisInitialized(_this));
-    _this.hideListings = _this.hideListings.bind(_assertThisInitialized(_this));
-    _this.showOneListing = _this.showOneListing.bind(_assertThisInitialized(_this));
-    _this.renderSubComponents = _this.renderSubComponents.bind(_assertThisInitialized(_this));
-    _this.hideOneListing = _this.hideOneListing.bind(_assertThisInitialized(_this));
-    _this.setSelectedListingId = _this.setSelectedListingId.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(SneakerShow).call(this, props));
   }
 
   _createClass(SneakerShow, [{
-    key: "setSelectedListingId",
-    value: function setSelectedListingId(id) {
-      this.setState({
-        selectedListingId: id
-      });
-    }
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSneaker(this.props.match.params.sneakerId);
       window.scrollTo(0, 0);
     }
   }, {
-    key: "showListings",
-    value: function showListings() {
-      this.setState({
-        showingListings: true
-      });
+    key: "lowestPrice",
+    value: function lowestPrice() {
+      if (!Object.values(this.props.listings).length) return null;
+      var sneakerListings = Object.values(this.props.listings);
+      return sneakerListings.reduce(function (min, nextListing) {
+        return nextListing.price < min ? nextListing.price : min;
+      }, sneakerListings[0].price);
     }
   }, {
-    key: "hideListings",
-    value: function hideListings() {
-      this.setState({
-        showingListings: false
-      });
-    }
-  }, {
-    key: "showOneListing",
-    value: function showOneListing(id) {
-      var _this2 = this;
-
-      console.log(id);
-      this.setState({
-        showingOneListing: true,
-        showingListings: false
-      }, function () {
-        return _this2.props.updateCurrentListing(id);
-      });
-    }
-  }, {
-    key: "hideOneListing",
-    value: function hideOneListing() {
-      this.setState({
-        showingOneListing: false,
-        showingListings: true
-      });
-    }
-  }, {
-    key: "renderSubComponents",
-    value: function renderSubComponents() {
-      if (this.state.showingListings) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          listings: this.props.listings,
-          hideListings: this.hideListings,
-          fetchSneaker: this.props.fetchSneaker,
-          showOneListing: this.showOneListing,
-          setSelectedListingId: this.setSelectedListingId
-        });
-      } else if (this.state.showingOneListing) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_show_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          hideOneListing: this.hideOneListing,
-          listingId: this.state.selectedListingId
-        });
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sneaker_profile__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          props: this.props
-        });
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.location.pathname !== this.props.location.pathname) {
+        this.props.fetchSneaker(this.props.match.params.sneakerId);
       }
     }
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var sneaker = this.props.sneaker;
       if (this.props.sneaker === undefined) return null;
+      var listingsArr = Object.values(this.props.listings);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "sneaker-show-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2177,12 +2034,33 @@ function (_React$Component) {
         id: "sneaker-deets"
       }, "".concat(sneaker.brand, " / ").concat(sneaker.silhouette, " / ").concat(sneaker.model)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sneaker-deets-container"
-      }, this.renderSubComponents(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "buy-new-button",
-        onClick: this.showListings
-      }, "Buy New"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "buy-used-button"
-      }, "Buy Used - Sold Out"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/sneakers/:sneakerId/listings/:listingId",
+        render: function render(props) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_show__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            props: props,
+            sneaker: _this.props.sneaker,
+            listings: _this.props.listings,
+            currentUser: _this.props.currentUser
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/sneakers/:sneakerId/listings",
+        render: function render() {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_listing_listing_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            listings: listingsArr,
+            sneaker: _this.props.sneaker
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/sneakers/:sneakerId",
+        render: function render() {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sneaker_profile__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            props: _this.props,
+            lowestPrice: _this.lowestPrice()
+          });
+        }
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
         className: "sneaker-description-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "sneaker-description-button"
@@ -2266,9 +2144,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   return {
     sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
-    listings: Object.values(state.entities.listings),
-    showingListings: ownProps.location.pathname.includes('listings') // listing: state.ui.currentListingId !== 0 ? state.entities.listings[state.ui.currentListingId] : {}
-
+    listings: state.entities.listings
   };
 };
 
@@ -2276,13 +2152,9 @@ var mdp = function mdp(dispatch) {
   return {
     fetchSneaker: function fetchSneaker(id) {
       return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneaker"])(id));
-    },
-    fetchListing: function fetchListing(sneakerId, listingId) {
-      return dispatch(Object(_actions_listing_actions__WEBPACK_IMPORTED_MODULE_3__["fetchListing"])(sneakerId, listingId));
-    },
-    updateCurrentListing: function updateCurrentListing(listingId) {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["updateCurrentListing"])(listingId));
-    }
+    } // fetchListing: (sneakerId, listingId) => dispatch(fetchListing(sneakerId, listingId)),
+    // updateCurrentListing: (listingId) => dispatch(updateCurrentListing(listingId))
+
   };
 };
 
@@ -2623,8 +2495,7 @@ var ListingsReducer = function ListingsReducer() {
 
   switch (action.type) {
     case _actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SNEAKER"]:
-      var listings = action.listings;
-      return Object.assign({}, state, listings);
+      return action.listings;
     // case RECEIVE_LISTING: 
     //   const listing = action.listing
     //     return Object.assign({}, state, listing)

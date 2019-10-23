@@ -1,30 +1,14 @@
 import React from 'react';
 import ListingIndex from '../listing/listing_index';
-// import SneakerPropsTable from './sneaker_props_table'
+import { Switch, Route, Link } from 'react-router-dom';
 import SneakerProfile from './sneaker_profile';
-import ListingShowContainer from '../listing/listing_show_container';
-import { Link } from 'react-router-dom';
+import ListingShow from '../listing/listing_show';
+
 
 class SneakerShow extends React.Component {
   constructor (props) {
     super(props); 
-    this.state = {
-      showingListings: false,
-      showingOneListing: false,
-      selectedListingId: null
-    }
-    this.showListings = this.showListings.bind(this);
-    this.hideListings = this.hideListings.bind(this);
-    this.showOneListing = this.showOneListing.bind(this);
-    this.renderSubComponents = this.renderSubComponents.bind(this);
-    this.hideOneListing = this.hideOneListing.bind(this);
-    this.setSelectedListingId = this.setSelectedListingId.bind(this);
-  }
-
-  setSelectedListingId (id) {
-    this.setState({
-      selectedListingId: id
-    })
+  
   }
 
   componentDidMount() {
@@ -32,51 +16,24 @@ class SneakerShow extends React.Component {
     window.scrollTo(0, 0);
    }
 
-  showListings () {
-    this.setState({
-      showingListings: true
-    })
+  lowestPrice() {
+    if (!Object.values(this.props.listings).length) return null;
+
+    const sneakerListings = Object.values(this.props.listings);
+    return sneakerListings.reduce((min, nextListing) => nextListing.price < min ? nextListing.price : min, sneakerListings[0].price);
   }
-
-  hideListings () {
-    this.setState({
-      showingListings: false
-    })
-  }
-
-  showOneListing (id) {
-    console.log(id);
-
-    this.setState({
-      showingOneListing: true,
-      showingListings: false
-    }, () => this.props.updateCurrentListing(id))
-  }
-
-  hideOneListing() {
-    this.setState({
-      showingOneListing: false,
-      showingListings: true
-    })
-  }
-
-
-  renderSubComponents() {
-      if (this.state.showingListings) {
-        return <ListingIndex listings={this.props.listings} hideListings={this.hideListings} fetchSneaker={this.props.fetchSneaker} 
-        showOneListing={this.showOneListing} setSelectedListingId={this.setSelectedListingId}/>
-      } else if (this.state.showingOneListing) {
-        return <ListingShowContainer hideOneListing={this.hideOneListing} listingId={this.state.selectedListingId}/>
-      } else {
-          return <SneakerProfile props={this.props}/>
-      }
+ 
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.fetchSneaker(this.props.match.params.sneakerId);
     }
+  }
   
-
   render () {
     let { sneaker } = this.props;
-
     if (this.props.sneaker === undefined) return null;
+    let listingsArr = Object.values(this.props.listings);
+
 
     return (
       <section className="sneaker-show-main">
@@ -88,17 +45,19 @@ class SneakerShow extends React.Component {
                <span id="sneaker-deets">{ `${sneaker.brand} / ${sneaker.silhouette} / ${sneaker.model}` }</span>
               </div>
             </div>
-
               <div className="sneaker-deets-container">
-
-                {this.renderSubComponents()}
-  
-                <button className="buy-new-button" onClick={this.showListings}>
-                  Buy New
-                  </button>
-                <button className="buy-used-button">
-                  Buy Used - Sold Out
-                </button>
+                <Switch>
+                  <Route path="/sneakers/:sneakerId/listings/:listingId"
+                   render={(props) => <ListingShow props={props} sneaker={this.props.sneaker} listings={this.props.listings} currentUser={this.props.currentUser} />}
+                  />
+                  <Route path="/sneakers/:sneakerId/listings"
+                    render={() => <ListingIndex listings={listingsArr}  sneaker={this.props.sneaker}/>} 
+                  />
+                  <Route
+                    path="/sneakers/:sneakerId"
+                    render={() => <SneakerProfile props={this.props} lowestPrice={this.lowestPrice()} />}
+                  />
+                </Switch>
               </div>
             </div>
 

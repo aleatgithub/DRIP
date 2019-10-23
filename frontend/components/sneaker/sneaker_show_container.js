@@ -6,15 +6,13 @@ import { updateCurrentListing } from '../../actions/ui_actions';
 
 const  msp = (state, ownProps) => ({
   sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
-  listings: Object.values(state.entities.listings),
-  showingListings: ownProps.location.pathname.includes('listings')
-  // listing: state.ui.currentListingId !== 0 ? state.entities.listings[state.ui.currentListingId] : {}
+  listings: state.entities.listings
 });
 
 const mdp = (dispatch) => ({
   fetchSneaker: (id) => dispatch(fetchSneaker(id)),
-  fetchListing: (sneakerId, listingId) => dispatch(fetchListing(sneakerId, listingId)),
-  updateCurrentListing: (listingId) => dispatch(updateCurrentListing(listingId))
+  // fetchListing: (sneakerId, listingId) => dispatch(fetchListing(sneakerId, listingId)),
+  // updateCurrentListing: (listingId) => dispatch(updateCurrentListing(listingId))
 });
 
 export default connect(msp, mdp)(SneakerShow);

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
-const ListingIndex = ( {listings, hideListings, showOneListing, setSelectedListingId} ) => {
+const ListingIndex = ( {listings } ) => {
 
   return (
     <div className="listing-index-container">
-      <button id="exit-listings-button" onClick={hideListings}>X</button>
-
+      <Link to={`sneakers/${listings[0].sneakerId}`}> <button id="exit-listings-button">X</button></Link>
+    
       <div className="listing-header-container">
         <h3 id="buy-new">Buy New</h3>
         <h2 id="us-sizes">US Sizes</h2>
@@ -16,17 +16,15 @@ const ListingIndex = ( {listings, hideListings, showOneListing, setSelectedListi
       {
         listings.map((listing, idx) => {
           return (
-            <button className="listing-index-item" onClick={() => { 
-              showOneListing(listing.id); 
-              setSelectedListingId(listing.id)}
-            } key={idx}>
+            <Link to={`/sneakers/${listing.sneakerId}/listings/${listing.id}`} className="listing-index-item" 
+             key={idx}>
               <div className="listing-size">
                 <span>{listing.size}W</span>
               </div>
               <div className="listing-price">
                 <span>${listing.price}</span>
               </div>
-            </button>
+            </Link>
           )
         })
       }
