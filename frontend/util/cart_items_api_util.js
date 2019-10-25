@@ -1,22 +1,22 @@
 
-export const fetchCartItems = () => (
-  $.ajax({
+export const fetchCart = () => {
+  return $.ajax({
     method: 'GET',
-    url: 'api/cart_items'
-  })
-);
+    url: '/api/cart_items'
+  });
+};
 
-export const addToCart = (cartItem) => (
-  $.ajax({
+export const addToCart = (cart_item) => {
+  return $.ajax({
     method: 'POST',
-    url: 'api/cart_items',
-    data: { cart_item: cartItem }
-  })
-);
+    url: '/api/cart_items',
+    data: { cart_item }
+  });
+};
 
-export const removeCartItem = cartItemId => (
-  $.ajax({
+export const removeFromCart = (id) => {
+  return $.ajax({
     method: 'DELETE',
-    url: `api/cart_items/${cartItemId}`
+    url: `/api/cart_items/${id}`
   })
-)
+}

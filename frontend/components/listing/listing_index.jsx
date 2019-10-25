@@ -10,7 +10,6 @@ const ListingIndex = ( {listings } ) => {
       <div className="listing-header-container">
         <h3 id="buy-new">Buy New</h3>
         <h2 id="us-sizes">US Sizes</h2>
-      </div>
       <div className="listing-index-items-container">
 
       {
@@ -28,8 +27,9 @@ const ListingIndex = ( {listings } ) => {
           )
         })
       }
-      </div>
-    </div>
+       </div>
+     </div>
+   </div>
   )
 }
 

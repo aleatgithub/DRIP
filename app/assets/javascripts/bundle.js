@@ -86,72 +86,75 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./frontend/actions/cart_items_actions.js":
-/*!************************************************!*\
-  !*** ./frontend/actions/cart_items_actions.js ***!
-  \************************************************/
-/*! exports provided: RECEIVE_CART_ITEMS, REMOVE_CART_ITEM, RECEIVE_CART_ITEM, receiveCartItems, receiveCartItem, deleteCartItem, selectAllCartItems, fetchCartItems, addToCart, removeCartItem */
+/***/ "./frontend/actions/cart_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/cart_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_CART, CLEAR_CART, REMOVE_CART_ITEM, CREATE_CART_ITEM, clearCart, fetchCart, removeCartItem, addToCart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CART_ITEMS", function() { return RECEIVE_CART_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CART", function() { return RECEIVE_CART; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_CART", function() { return CLEAR_CART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_CART_ITEM", function() { return REMOVE_CART_ITEM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CART_ITEM", function() { return RECEIVE_CART_ITEM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCartItems", function() { return receiveCartItems; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCartItem", function() { return receiveCartItem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCartItem", function() { return deleteCartItem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllCartItems", function() { return selectAllCartItems; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCartItems", function() { return fetchCartItems; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CREATE_CART_ITEM", function() { return CREATE_CART_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearCart", function() { return clearCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCart", function() { return fetchCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCartItem", function() { return removeCartItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
 /* harmony import */ var _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/cart_items_api_util */ "./frontend/util/cart_items_api_util.js");
 
-var RECEIVE_CART_ITEMS = 'RECEIVE_CART_ITEMS';
+var RECEIVE_CART = 'RECEIVE_CART';
+var CLEAR_CART = 'CLEAR_CART';
 var REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
-var RECEIVE_CART_ITEM = 'RECEIVE_CART_ITEM'; // export const RECEIVE_ITEM_ERRORS = 'RECEIVE_ITEM_ERRORS';
+var CREATE_CART_ITEM = 'CREATE_CART_ITEM';
+var clearCart = function clearCart() {
+  return {
+    type: CLEAR_CART
+  };
+};
 
-var receiveCartItems = function receiveCartItems(cartItems) {
+var receiveCart = function receiveCart(cart_items) {
   return {
-    type: RECEIVE_CART_ITEMS,
-    cartItems: cartItems
+    type: RECEIVE_CART,
+    cartItems: cart_items
   };
 };
-var receiveCartItem = function receiveCartItem(cartItem) {
+
+var createCartItem = function createCartItem(cart_item) {
   return {
-    type: RECEIVE_CART_ITEM,
-    cartItem: cartItem
+    type: CREATE_CART_ITEM,
+    cartItem: cart_item
   };
 };
-var deleteCartItem = function deleteCartItem(cartItemId) {
+
+var deleteCartItem = function deleteCartItem(id) {
   return {
     type: REMOVE_CART_ITEM,
-    cartItemId: cartItemId
+    cartItemId: id
   };
 };
-var selectAllCartItems = function selectAllCartItems(allCartItems) {
-  return Object.keys(allCartItems).map(function (id) {
-    return allCartItems[id];
-  });
-};
-var fetchCartItems = function fetchCartItems() {
+
+var fetchCart = function fetchCart() {
   return function (dispatch) {
-    return _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCartItems"]().then(function (cartItems) {
-      return dispatch(receiveCartItems(cartItems));
+    return _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCart"]().then(function (payload) {
+      console.log(payload);
+      return dispatch(receiveCart(payload));
+    });
+  };
+};
+var removeCartItem = function removeCartItem(id) {
+  return function (dispatch) {
+    return _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_0__["removeFromCart"](id).then(function (id) {
+      return dispatch(deleteCartItem(id));
     });
   };
 };
 var addToCart = function addToCart(cartItem) {
   return function (dispatch) {
     return _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_0__["addToCart"](cartItem).then(function (cartItem) {
-      return dispatch(receiveCartItem(cartItem));
-    });
-  };
-};
-var removeCartItem = function removeCartItem(cartItemId) {
-  return function (dispatch) {
-    return _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_0__["removeCartItem"](cartItemId).then(function () {
-      return dispatch(deleteCartItem(cartItemId));
+      return dispatch(createCartItem(cartItem));
     });
   };
 };
@@ -337,7 +340,7 @@ var receiveSearch = function receiveSearch(_ref2) {
   return {
     type: RECEIVE_SEARCH,
     sneakers: sneakers,
-    sneakerCount: sneaker_count
+    sneakerCount: sneaker_countz
   };
 };
 
@@ -498,141 +501,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+ // import CartItem from './cart_item';
 
-
-var CartItems =
+var CartItemsIndex =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(CartItems, _React$Component);
+  _inherits(CartItemsIndex, _React$Component);
 
-  function CartItems() {
-    var _this;
+  function CartItemsIndex(props) {
+    _classCallCheck(this, CartItemsIndex);
 
-    _classCallCheck(this, CartItems);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CartItems).call(this));
-    _this.handleRemoveCartItem = _this.handleRemoveCartItem.bind(_assertThisInitialized(_this));
-    _this.calculateTotalPrice = _this.calculateTotalPrice.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(CartItemsIndex).call(this, props));
   }
 
-  _createClass(CartItems, [{
+  _createClass(CartItemsIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCartItems();
+      window.scrollTo(0, 0);
+      this.props.fetchCart();
     }
   }, {
-    key: "handleUpdateCartItem",
-    value: function handleUpdateCartItem(item) {
-      var _this2 = this;
+    key: "cartTotal",
+    value: function cartTotal(cartItems) {
+      var _this = this;
 
-      return function (event) {
-        _this2.props.updateCartItem({
-          id: item.id,
-          quantity: event.target.value
-        });
-      };
-    }
-  }, {
-    key: "handleRemoveCartItem",
-    value: function handleRemoveCartItem(cartItemId) {
-      var _this3 = this;
-
-      return function (event) {
-        _this3.props.removeCartItem(cartItemId);
-      };
-    }
-  }, {
-    key: "calculateTotalPrice",
-    value: function calculateTotalPrice() {
-      var price = 0;
-      this.props.allCartItemsArray.forEach(function (item) {
-        price += item.quantity * item.price;
+      this.orderTotal = 0;
+      cartItems.forEach(function (cartItem) {
+        _this.orderTotal += cartItem.price;
       });
-      return price;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
-      var allCartItemsArray = this.props.allCartItemsArray;
-      var cartItemsLi;
-
-      if (allCartItemsArray.length > 0) {
-        cartItemsLi = allCartItemsArray.map(function (item) {
-          var shopImageUrl = item.shopImageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "cart-shop-logo",
-            src: item.shopImageUrl
-          }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "cart-shop-logo"
-          });
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: item.id
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "shop-info"
-          }, shopImageUrl, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/shops/".concat(item.shopId)
-          }, item.shopName))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "item-info"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "item-pic-title"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: item.imageUrls[0],
-            onClick: _this4.directToProduct(item.shopId, item.productId)
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            onClick: _this4.directToProduct(item.shopId, item.productId)
-          }, item.productName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "clicky",
-            onClick: _this4.handleRemoveCartItem(item.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-            className: "fa fa-trash",
-            "aria-hidden": "true"
-          })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-            type: "number",
-            value: item.quantity,
-            id: "quantity",
-            min: "1",
-            max: item.maximumQuantity,
-            onChange: _this4.handleUpdateCartItem(item)
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "price-column"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "USD ", item.price * item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(USD ", item.price, " each)"))));
-        });
-      } else {
-        cartItemsLi = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      }
-
-      ;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "cart-items-checkout"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "cart-items-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, allCartItemsArray.length, " item(s) in your cart"), cartItemsLi), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "checkout"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "items-total"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Item(s) total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "USD ", this.calculateTotalPrice())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Shipping"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "-"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "final-checkout-section"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Total")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "USD ", this.calculateTotalPrice()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "clicky"
-      }, "Proceed to checkout")));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " PLACEHOLDER FOR CART"));
     }
   }]);
 
-  return CartItems;
+  return CartItemsIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (CartItems);
+/* harmony default export */ __webpack_exports__["default"] = (CartItemsIndex);
 
 /***/ }),
 
@@ -646,7 +563,7 @@ function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/cart_items_actions */ "./frontend/actions/cart_items_actions.js");
+/* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
 /* harmony import */ var _cart_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart_items */ "./frontend/components/cart/cart_items.jsx");
 
 
@@ -654,17 +571,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    allCartItemsArray: Object(_actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_1__["selectAllCartItems"])(state.entities.cartItems)
+    cartItems: Object.values(state.entities.cartItems)
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchCartItems: function fetchCartItems() {
-      return dispatch(Object(_actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCartItems"])());
+    fetchCart: function fetchCart() {
+      return dispatch(Object(_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCart"])());
     },
-    removeCartItem: function removeCartItem(cartItemId) {
-      return dispatch(Object(_actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_1__["removeCartItem"])(cartItemId));
+    clearCart: function clearCart() {
+      return dispatch(Object(_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__["clearCart"])());
+    },
+    removeCartItem: function removeCartItem(id) {
+      return dispatch(Object(_actions_cart_actions__WEBPACK_IMPORTED_MODULE_1__["removeCartItem"])(id));
     }
   };
 };
@@ -909,7 +829,7 @@ var ListingIndex = function ListingIndex(_ref) {
     id: "buy-new"
   }, "Buy New"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     id: "us-sizes"
-  }, "US Sizes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "US Sizes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-index-items-container"
   }, listings.map(function (listing, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -921,7 +841,7 @@ var ListingIndex = function ListingIndex(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, listing.size, "W")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "listing-price"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "$", listing.price)));
-  })));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListingIndex);
@@ -947,8 +867,25 @@ var ListingShow = function ListingShow(_ref) {
   var props = _ref.props,
       sneaker = _ref.sneaker,
       listings = _ref.listings,
-      currentUser = _ref.currentUser;
+      currentUser = _ref.currentUser,
+      addToCart = _ref.addToCart;
   var listing = listings[props.match.params.listingId];
+  var thisListing = {
+    user_id: currentUser,
+    listing_id: listing.id
+  };
+  var loginToBuy = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/cart_items"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "add-to-cart-button",
+    onClick: function onClick() {
+      return addToCart(thisListing);
+    }
+  }, "Add to Cart")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/login"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "login-redirect-button"
+  }, "Login to Purchase"));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "listing-show-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -983,13 +920,11 @@ var ListingShow = function ListingShow(_ref) {
     className: "prop-key"
   }, "Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "prop-value"
-  }, "Good Condition"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    to: "/sneakers/".concat(listings.sneaker_id)
+  }, "Good Condition"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/sneakers/".concat(sneaker.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "back-to-listings-button"
-  }, "Cancel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "add-to-cart-button"
-  }, "Add To Cart"));
+  }, "Cancel")), loginToBuy);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListingShow);
@@ -2041,7 +1976,8 @@ function (_React$Component) {
             props: props,
             sneaker: _this.props.sneaker,
             listings: _this.props.listings,
-            currentUser: _this.props.currentUser
+            currentUser: _this.props.currentUser,
+            addToCart: _this.props.addToCart
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -2135,6 +2071,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sneaker_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sneaker_show */ "./frontend/components/sneaker/sneaker_show.jsx");
 /* harmony import */ var _actions_listing_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/listing_actions */ "./frontend/actions/listing_actions.js");
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/cart_actions */ "./frontend/actions/cart_actions.js");
+
 
 
 
@@ -2144,7 +2082,8 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   return {
     sneaker: state.entities.sneakers[ownProps.match.params.sneakerId],
-    listings: state.entities.listings
+    listings: state.entities.listings,
+    currentUser: state.session.id
   };
 };
 
@@ -2152,9 +2091,10 @@ var mdp = function mdp(dispatch) {
   return {
     fetchSneaker: function fetchSneaker(id) {
       return dispatch(Object(_actions_sneaker_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSneaker"])(id));
-    } // fetchListing: (sneakerId, listingId) => dispatch(fetchListing(sneakerId, listingId)),
-    // updateCurrentListing: (listingId) => dispatch(updateCurrentListing(listingId))
-
+    },
+    addToCart: function addToCart(cartItem) {
+      return dispatch(Object(_actions_cart_actions__WEBPACK_IMPORTED_MODULE_5__["addToCart"])(cartItem));
+    }
   };
 };
 
@@ -2345,7 +2285,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/sneakers_api_util */ "./frontend/util/sneakers_api_util.js");
+/* harmony import */ var _util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util/cart_items_api_util */ "./frontend/util/cart_items_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2376,7 +2318,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.getState = store.getState;
   window.store = store;
-  window.searchSneakers = _util_sneakers_api_util__WEBPACK_IMPORTED_MODULE_5__["searchSneakers"]; //end of testing
+  window.fetchCart = Object(_util_cart_items_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchCart"])(); //end of testing
 
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -2395,28 +2337,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/cart_items_actions */ "./frontend/actions/cart_items_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/cart_actions */ "./frontend/actions/cart_actions.js");
 
 
 var CartItemsReducer = function CartItemsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var newState = Object.assign({}, state);
 
   switch (action.type) {
-    case _actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CART_ITEMS"]:
-      return Object.assign({}, action.cartItems);
+    case _actions_cart_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CART"]:
+      console.log(action);
 
-    case _actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_CART_ITEM"]:
-      var cartItemId = action.cartItemId;
-      var newObject = Object.assign({}, state);
-      delete newObject[cartItemId];
-      return newObject;
+      if (action.cartItems) {
+        newState.cartItems = action.cartItems;
+      }
 
-    case _actions_cart_items_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CART_ITEM"]:
-      return Object.assign({}, state, _defineProperty({}, action.cartItem.id, action.cartItem));
+      return newState;
+
+    case _actions_cart_actions__WEBPACK_IMPORTED_MODULE_0__["CREATE_CART_ITEM"]:
+      return Object.assign({}, state, action.cartItem);
+
+    case _actions_cart_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_CART_ITEM"]:
+      var nextState = Object.assign({}, state);
+      delete nextState[action.cartItemId];
+      return nextState;
+
+    case _actions_cart_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_CART"]:
+      return {};
 
     default:
       return state;
@@ -2762,33 +2711,33 @@ var configureStore = function configureStore() {
 /*!**********************************************!*\
   !*** ./frontend/util/cart_items_api_util.js ***!
   \**********************************************/
-/*! exports provided: fetchCartItems, addToCart, removeCartItem */
+/*! exports provided: fetchCart, addToCart, removeFromCart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCartItems", function() { return fetchCartItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCart", function() { return fetchCart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCartItem", function() { return removeCartItem; });
-var fetchCartItems = function fetchCartItems() {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeFromCart", function() { return removeFromCart; });
+var fetchCart = function fetchCart() {
   return $.ajax({
     method: 'GET',
-    url: 'api/cart_items'
+    url: '/api/cart_items'
   });
 };
-var addToCart = function addToCart(cartItem) {
+var addToCart = function addToCart(cart_item) {
   return $.ajax({
     method: 'POST',
-    url: 'api/cart_items',
+    url: '/api/cart_items',
     data: {
-      cart_item: cartItem
+      cart_item: cart_item
     }
   });
 };
-var removeCartItem = function removeCartItem(cartItemId) {
+var removeFromCart = function removeFromCart(id) {
   return $.ajax({
     method: 'DELETE',
-    url: "api/cart_items/".concat(cartItemId)
+    url: "/api/cart_items/".concat(id)
   });
 };
 

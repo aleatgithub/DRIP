@@ -1,9 +1,23 @@
 import React from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const ListingShow = ({ props, sneaker, listings, currentUser }) => { 
+const ListingShow = ({ props, sneaker, listings, currentUser, addToCart }) => { 
   const listing = listings[props.match.params.listingId];
+  
+  const thisListing = {
+    user_id: currentUser,
+    listing_id: listing.id
+  }
 
+  const loginToBuy = currentUser ? (
+    <Link to ="/cart_items"> 
+      <button className="add-to-cart-button" onClick={() => addToCart(thisListing)}>Add to Cart</button>
+    </Link>
+  ) : (
+    <Link to="/login"> 
+    <button className="login-redirect-button">Login to Purchase</button>
+    </Link>
+  )
 
     return (
       <div className="listing-show-container">
@@ -32,15 +46,12 @@ const ListingShow = ({ props, sneaker, listings, currentUser }) => {
           </div>
         </div>
 
-        <Link to={`/sneakers/${listings.sneaker_id}`}>
+        <Link to={`/sneakers/${sneaker.id}`}>
           <button className="back-to-listings-button">
             Cancel
           </button>
         </Link>
-
-        <button className="add-to-cart-button">
-          Add To Cart
-        </button>
+        {loginToBuy}
       </div>
      )
   }

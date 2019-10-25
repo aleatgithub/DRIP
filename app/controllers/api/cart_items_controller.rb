@@ -7,7 +7,6 @@ class Api::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-
     if @cart_item.save
       render :show
     else
@@ -23,7 +22,7 @@ class Api::CartItemsController < ApplicationController
   private
   
   def cart_item_params
-    params.require(:cart_items).permit(:user_id, :listing_id)
+    params.require(:cart_item).permit(:user_id, :listing_id)
   end
 
 end

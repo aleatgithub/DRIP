@@ -1,24 +1,25 @@
-import { RECEIVE_CART_ITEMS, REMOVE_CART_ITEM, RECEIVE_CART_ITEM } from "../actions/cart_items_actions";
-
+import { RECEIVE_CART, REMOVE_CART_ITEM, CREATE_CART_ITEM, CLEAR_CART } from "../actions/cart_actions";
 
 
 const CartItemsReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = Object.assign({}, state);
 
   switch (action.type) {
-    case RECEIVE_CART_ITEMS:
-      return Object.assign({}, action.cartItems);
-      
+    case RECEIVE_CART:
+      console.log(action)
+      if (action.cartItems) {
+        newState.cartItems = action.cartItems
+      }
+      return newState;
+    case CREATE_CART_ITEM:
+      return Object.assign({}, state, action.cartItem);
     case REMOVE_CART_ITEM:
-      const cartItemId = action.cartItemId;
-      const newObject = Object.assign({}, state);
-      delete newObject[cartItemId];
-      return newObject;
-      
-    case RECEIVE_CART_ITEM:
-      return Object.assign({}, state, {
-        [action.cartItem.id]: action.cartItem
-      });
+      let nextState = Object.assign({}, state);
+      delete nextState[action.cartItemId];
+      return nextState;
+    case CLEAR_CART:
+      return {};
     default:
       return state;
   }

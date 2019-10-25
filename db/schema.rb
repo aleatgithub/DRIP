@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_005127) do
+ActiveRecord::Schema.define(version: 2019_10_25_002031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2019_09_20_005127) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "listing_id", null: false
     t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_cart_items_on_user_id", unique: true
   end
 
   create_table "listings", force: :cascade do |t|

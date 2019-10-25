@@ -8,7 +8,6 @@ import ListingShow from '../listing/listing_show';
 class SneakerShow extends React.Component {
   constructor (props) {
     super(props); 
-  
   }
 
   componentDidMount() {
@@ -18,7 +17,6 @@ class SneakerShow extends React.Component {
 
   lowestPrice() {
     if (!Object.values(this.props.listings).length) return null;
-
     const sneakerListings = Object.values(this.props.listings);
     return sneakerListings.reduce((min, nextListing) => nextListing.price < min ? nextListing.price : min, sneakerListings[0].price);
   }
@@ -48,7 +46,7 @@ class SneakerShow extends React.Component {
               <div className="sneaker-deets-container">
                 <Switch>
                   <Route path="/sneakers/:sneakerId/listings/:listingId"
-                   render={(props) => <ListingShow props={props} sneaker={this.props.sneaker} listings={this.props.listings} currentUser={this.props.currentUser} />}
+                   render={(props) => <ListingShow props={props} sneaker={this.props.sneaker} listings={this.props.listings} currentUser={this.props.currentUser} addToCart={this.props.addToCart}/>}
                   />
                   <Route path="/sneakers/:sneakerId/listings"
                     render={() => <ListingIndex listings={listingsArr}  sneaker={this.props.sneaker}/>} 
