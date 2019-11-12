@@ -787,7 +787,7 @@ var Footer = function Footer() {
     className: "footer-send-link-box"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "send-link-text"
-  }, "Glad you're here. Check out the site that inspired me to make DRIP."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "Hi :) Check out the site that inspired me to make DRIP."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.goat.com/",
     id: "send-link-button"
   }, " GOAT.com")));

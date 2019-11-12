@@ -20,7 +20,7 @@ const Footer = () => (
     </div>
 
     <div className="footer-send-link-box">
-        <p className="send-link-text">Glad you're here. Check out the site that inspired me to make DRIP.</p>
+        <p className="send-link-text">Hi :) Check out the site that inspired me to make DRIP.</p>
       <a href="https://www.goat.com/" id="send-link-button"> GOAT.com
           </a>
     </div>
