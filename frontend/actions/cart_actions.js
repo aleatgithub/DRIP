@@ -14,11 +14,6 @@ const receiveCart = ( cart_items ) => ({
   cartItems: cart_items
 });
 
-const createCartItem = (cart_item) => ({
-  type: CREATE_CART_ITEM,
-  cartItem: cart_item 
-});
-
 const deleteCartItem = (id) => ({
   type: REMOVE_CART_ITEM,
   cartItemId: id
@@ -26,15 +21,18 @@ const deleteCartItem = (id) => ({
 
 export const fetchCart = () => dispatch => (
   CartItemsApiUtil.fetchCart().then(payload => {
-    console.log(payload)
     return dispatch(receiveCart(payload))
   })
-);
-
+  );
+  
 export const removeCartItem = (id) => dispatch => (
-  CartItemsApiUtil.removeFromCart(id).then((id) => dispatch(deleteCartItem(id)))
+    CartItemsApiUtil.removeFromCart(id).then((id) => dispatch(deleteCartItem(id)))
 );
 
+const createCartItem = (cart_item) => ({
+      type: CREATE_CART_ITEM,
+      cartItem: cart_item
+});
 export const addToCart = (cartItem) => dispatch => (
    CartItemsApiUtil.addToCart(cartItem).then((cartItem) => dispatch(createCartItem(cartItem)))
 );

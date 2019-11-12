@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.fetchSneaker = fetchSneaker;
   window.getState = store.getState;
   window.store = store;
-  window.fetchCart = fetchCart();
+  window.fetchCart = fetchCart;
   
   //end of testing
   

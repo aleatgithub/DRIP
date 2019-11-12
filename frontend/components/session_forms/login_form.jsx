@@ -114,7 +114,7 @@ class LoginForm extends React.Component {
           </form>
 
           <div className="session-submit"> 
-            <label htmlFor="session-submit-button" id="label-ssb">
+            <label htmlFor="session-submit-button" id="label-ssb" onClick={this.handleSubmit}>
                 Log In
             </label>
           </div>

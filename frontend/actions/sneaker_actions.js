@@ -18,7 +18,7 @@ const receiveSneaker = ( {sneaker, listings}) => ({
 const receiveSearch = ({ sneakers, sneaker_count }) => ({
   type: RECEIVE_SEARCH,
   sneakers: sneakers,
-  sneakerCount: sneaker_countz
+  sneakerCount: sneaker_count
 }) 
 
 export const resetSneakers = () => ({

@@ -3,7 +3,7 @@ import { fetchCart, clearCart, removeCartItem } from '../../actions/cart_actions
 import CartItems from "./cart_items";
 
 const mapStateToProps = state => ({
-  cartItems: Object.values(state.entities.cartItems)
+  cartItems: Object.values(state.entities.cart)
 });
 
 const mapDispatchToProps = dispatch => ({

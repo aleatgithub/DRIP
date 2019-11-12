@@ -3,7 +3,7 @@
 }
 
 .search-bar-container {
-  width: 100%;
+  width: 80vw;
   border: 1px solid black;
   margin: auto;
   margin-top: 10px;
@@ -24,4 +24,34 @@
   width: 100%;
   border: none;
 
+}
+
+.search-bar {
+  margin: 0px 65px;
+}
+
+.search-query {
+  text-transform: uppercase;
+  font-family: 'Overpass', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: center;
+  margin: 36.5px auto;
+  text-transform: uppercase;
+  font-family: 'Overpass', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #777777;
+}
+
+.no-results-text {
+  text-align: center;
+  font-size: 20px;
 }

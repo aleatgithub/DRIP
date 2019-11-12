@@ -1,4 +1,4 @@
-import { RECEIVE_SNEAKER } from '../actions/sneaker_actions';
+import { RECEIVE_SNEAKER, RECEIVE_LISTING } from '../actions/sneaker_actions';
 
 
 const ListingsReducer = (state = {}, action) => {
@@ -7,9 +7,9 @@ const ListingsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SNEAKER:
       return action.listings;
-    // case RECEIVE_LISTING: 
-    //   const listing = action.listing
-    //     return Object.assign({}, state, listing)
+    case RECEIVE_LISTING: 
+      const listing = action.listing
+        return Object.assign({}, state, listing)
     default:
       return state;
   }

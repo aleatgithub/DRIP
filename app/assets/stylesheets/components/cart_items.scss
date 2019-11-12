@@ -1,0 +1,244 @@
+.cart-container {
+  width: 1250px;
+  margin: 0px auto 90px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  height: 650px;
+  font-family: 'Overpass', sans-serif;
+}
+
+.cart-index-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  border-right: 1px solid black;
+}
+// .cart-index-headers {
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   text-align: center;
+//   padding: 107px 0px 80px;
+// }
+
+.num-cart-items {
+  align-self: center;
+  padding-top: 85px;
+  color: gray;
+}
+
+.cart-container {
+  max-width: 80vw;
+  margin: 0px auto 90px;
+  display: flex;
+  border: 1px solid black;
+  height: 660px; 
+  font-family: 'Overpass', sans-serif;
+}
+
+.cart-items-index-container {
+  width: 845px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Source Serif Pro', serif;
+  font-size: 30px;
+  padding: 0px 0px 80px;
+
+}
+
+.cart-subheader {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 0px 0px;
+  font-family: 'Overpass', sans-serif;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #777777;
+}
+
+.cart-empty-msg {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+  font-family: 'Source Serif Pro', serif;
+  color: #777777;
+  padding: 11px;
+  background-color: white;
+  width: 80%;
+  // z-index: 50;
+}
+
+.cart-items-container {
+  width: 90%;
+  margin: 0px auto;
+  border-top: 1px solid #B1B1B1;
+}
+
+.cart-item-container {
+  border-bottom: 1px solid #B1B1B1;
+  display: flex;
+  padding: 20px;
+}
+
+.cart-item-container li {
+  list-style: none;
+}
+
+.cart-item-image-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cart-item-container:last-of-type {
+  margin-bottom: 50px;
+}
+
+.cart-item-image {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.cart-item-info-container {
+  text-align: right;
+  justify-content: right;
+  width: 100%;
+}
+
+.cart-item-title {
+  font-family: 'Source Serif Pro', serif;
+}
+
+.cart-item-subtitle {
+  padding-top: 7.5px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.remove-item-button {
+  cursor: pointer;
+  margin-top: 30px;
+  font-family: 'Overpass', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  color: #777777;
+}
+
+.remove-item-button:hover, .cart-item-title:hover {
+  text-decoration: underline;
+}
+
+.order-summary-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.order-sum-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Source Serif Pro', serif;
+  font-size: 30px;
+  padding: 107px 0px 74px;
+}
+
+.order-total-container {
+  width: 85%;
+  margin: 0px auto 90px;
+  border-top: 1px solid #B1B1B1;
+}
+
+.order-total-fact {
+  display: flex;
+  justify-content: space-between;
+  padding: 12.5px 0px;
+  border-bottom: 1px solid #B1B1B1;
+  font-family: 'Overpass', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  color: black;
+}
+
+.order-total-key {
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.order-total-value {
+  letter-spacing: 0.5px;
+}
+
+#cc {
+  margin-top: -5px;
+  font-size: 14px;
+}
+
+.checkout-disclaimer {
+  font-size: 11px;
+  text-align: center;
+  color: #777777;
+  padding: 15px 20px;
+}
+
+.order-details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+
+.order-details-container li {
+  list-style: none;
+}
+
+.checkout-button {
+  cursor: pointer;
+  border-top: 1px solid black;
+  width: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 15px 0px;
+  background-color: black;
+  color: rgb(38, 171, 220);
+}
+
+.cancel-button:hover{
+  background-color: black;
+  color: white;
+}
+
+.cancel-button {
+  cursor: pointer;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  width: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 15px 0px;
+}

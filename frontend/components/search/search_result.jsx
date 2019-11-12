@@ -28,7 +28,7 @@ const SearchResult = ({ sneakers, search }) => {
     )
   } else if (!sneakers.length && search.length ) {
     return (
-      <p>There are no matching results please try a different search.</p>
+      <div className="no-results-text"><p>There are no matching results please try a different search.</p></div>
     )
   } else {
     return null;

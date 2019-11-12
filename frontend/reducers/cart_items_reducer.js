@@ -7,17 +7,18 @@ const CartItemsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CART:
-      console.log(action)
+
       if (action.cartItems) {
-        newState.cartItems = action.cartItems
+        // newState.cartItems = action.cartItems
+        return Object.assign({}, state, action.cartItems)
       }
       return newState;
     case CREATE_CART_ITEM:
       return Object.assign({}, state, action.cartItem);
     case REMOVE_CART_ITEM:
-      let nextState = Object.assign({}, state);
-      delete nextState[action.cartItemId];
-      return nextState;
+      // let nextState = Object.assign({}, state);
+      delete state[action.cartItemId];
+      return state;
     case CLEAR_CART:
       return {};
     default:
