@@ -346,8 +346,12 @@ users.map! { |user| User.create(user)}
         Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(2200, 2700) })
       end
     when "Air Jordan 1 Retro High OG 'Gym Red'"
-    limited_sizes.each do |size|
-      Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(2200, 2700) })
+      sizes.each do |size|
+      Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(110, 600) })
+      end
+      when "Air Jordan 1 Retro High OG 'Top 3'"
+      sizes.each do |size|
+      Listing.create({ sneaker_id: sneaker[:id], size: size, price: price_generator(345, 820) })
       end
     end
   end

@@ -21,8 +21,7 @@ const Footer = () => (
 
     <div className="footer-send-link-box">
         <p className="send-link-text">Hi :) Click on the button below to see the site that inspired me to make DRIP:</p>
-      <a href="https://www.goat.com/" id="send-link-button"> GOAT.com
-          </a>
+      <a href="https://www.goat.com/" id="send-link-button"> GOAT.com</a>
     </div>
   </div>
 );
